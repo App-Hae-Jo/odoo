@@ -3,7 +3,7 @@
     <t t-call="iload.iload_layout">
         <div class="container">
             <form action="/iload/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" accept="image/*"/>
+            <input type="file" name="file" accept="image/*,application/pdf"/>
             <button type="submit">업로드</button>
         </form>
         </div>
