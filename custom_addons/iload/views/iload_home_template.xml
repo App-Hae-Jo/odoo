@@ -1,0 +1,12 @@
+<odoo>
+    <template id="iload_home_template">
+    <t t-call="iload.iload_layout">
+        <div class="container">
+            <form action="/iload/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*"/>
+            <button type="submit">업로드</button>
+        </form>
+        </div>
+    </t>
+    </template>
+</odoo>

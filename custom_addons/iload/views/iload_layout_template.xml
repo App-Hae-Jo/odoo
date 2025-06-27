@@ -1,0 +1,24 @@
+<odoo>
+    <template id="iload_layout">
+    <html>
+        <head>
+            <title>iLoad</title>
+            <meta charset="utf-8"/>
+            <!-- 필요 시 CSS, JS 직접 넣기 -->
+        </head>
+        <body>
+            <header>
+                <h1>iLoad</h1>
+            </header>
+
+            <main>
+                <t t-raw="0"/>
+            </main>
+
+            <footer>
+                <p> 2025 iLoad – by Team AI dot</p>
+            </footer>
+        </body>
+    </html>
+    </template>
+</odoo>

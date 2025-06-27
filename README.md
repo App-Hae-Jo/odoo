@@ -35,3 +35,24 @@ Developers can start with [the developer tutorials](https://www.odoo.com/documen
 
 If you believe you have found a security issue, check our [Responsible Disclosure page](https://www.odoo.com/security-report)
 for details and get in touch with us via email.
+
+## RUN Odoo
+
+```
+/usr/local/Cellar/python@3.11/3.11.13/bin/python3.11 -m venv venv
+source venv/bin/activate
+
+pip install -U pip setuptools wheel
+pip install -r requirements.txt
+
+./odoo-bin -c odoo.conf --dev=all
+
+
+http://localhost:8069
+```
+
+## xml TEST
+
+```
+xmllint --noout views/iload_home_template.xml
+```
