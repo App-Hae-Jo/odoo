@@ -1,24 +1,38 @@
 <odoo>
     <template id="iload_layout">
-    <html>
+        <html>
         <head>
-            <title>iLoad</title>
+            <title>iLoad / Odoo</title>
             <meta charset="utf-8"/>
-            <!-- 필요 시 CSS, JS 직접 넣기 -->
+            <link rel="stylesheet" href="/iload/static/src/css/iload_style.css"/>
         </head>
         <body>
             <header>
-                <h1>iLoad</h1>
+            <div class="logo">
+                <img t-att-src="'/iload/static/src/img/iload_logo.svg'" alt="iLoad Logo" style="height: 30px;"/> |
+                <img t-att-src="'/iload/static/src/img/odoo_logo.png'" alt="Odoo Logo" style="height: 30px;"/>
+            </div>
             </header>
 
-            <main>
+            <main class="layout">
+            <aside class="sidebar">
+                <ul>
+                    <li><a href="/iload">메인화면</a></li>
+                    <li><a href="/iload">거래 계획 관리</a></li>
+                    <li><a href="/iload#1">매입 관리</a></li>
+                    <li><a href="/iload#2">말소 관리</a></li>
+                    <li><a href="/iload#3">수출 관리</a></li>
+                </ul>
+            </aside>
+            <section class="content">
                 <t t-raw="0"/>
+            </section>
             </main>
 
             <footer>
-                <p> 2025 iLoad – by Team AI dot</p>
+                <p>2025 iLoad – by Team AI dot</p>
             </footer>
         </body>
-    </html>
+        </html>
     </template>
 </odoo>

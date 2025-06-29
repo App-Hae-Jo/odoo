@@ -15,3 +15,12 @@ class ILoadController(http.Controller):
         image_data = file.read()
         # 이후 AI 서버로 전송 등 처리
         return f"<h2>파일 {file.filename} 업로드 완료</h2>"
+    
+    @http.route('/test_static', auth='public')
+    def test_static(self):
+        import os
+        path = os.path.abspath(os.path.join(
+            http.addons_module.get_module_path('iload'),
+            'static/src/img/iload_logo.svg'
+        ))
+        return f"<h1>Expected path:</h1><p>{path}</p>"
