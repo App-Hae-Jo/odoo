@@ -15,6 +15,7 @@
         'mail',
     ],
     'data': [
+        'views/component/breadcrumb_template.xml',
         'views/iload_layout_template.xml',
         'views/iload_home_template.xml',
     ],

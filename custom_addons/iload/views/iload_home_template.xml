@@ -1,13 +1,16 @@
 <odoo>
     <template id="iload_home_template">
     <t t-call="iload.iload_layout">
-        <div class="container">
+        <section class="container">
+            <t t-call="iload.iload_breadcrumb">
+                <t t-set="breadcrumbs" t-value="[{'label': 'Home', 'href': '/iload'}, {'label': 'Upload'}]"/>
+            </t>
             <form action="/iload/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" accept="image/*,application/pdf"/>
-            <button type="submit">업로드</button>
-            <!-- <img t-att-src="'/iload/static/src/img/iload_logo.svg'" alt="iLoad Logo" style="height: 50px;"/> -->
-        </form>
-        </div>
+                <input type="file" name="file" accept="image/*,application/pdf"/>
+                <button type="submit">업로드</button>
+                <!-- <img t-att-src="'/iload/static/src/img/iload_logo.svg'" alt="iLoad Logo" style="height: 50px;"/> -->
+            </form>
+        </section>
     </t>
     </template>
 </odoo>

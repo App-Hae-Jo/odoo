@@ -1,0 +1,15 @@
+<odoo>
+    <template id="iload_breadcrumb">
+        <nav class="breadcrumb">
+        <t t-foreach="breadcrumbs" t-as="item">
+            <t t-if="not item_last">
+            <a t-att-href="item['href']"><t t-esc="item['label']"/></a>
+            <span>/</span>
+            </t>
+            <t t-if="item_last">
+            <span><t t-esc="item['label']"/></span>
+            </t>
+        </t>
+        </nav>
+    </template>
+</odoo>

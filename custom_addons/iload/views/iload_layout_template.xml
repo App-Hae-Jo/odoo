@@ -17,7 +17,7 @@
             <main class="layout">
             <aside class="sidebar">
                 <ul>
-                    <li><a href="/iload">메인화면</a></li>
+                    <li><a href="/iload">업로드</a></li>
                     <li><a href="/iload">거래 계획 관리</a></li>
                     <li><a href="/iload#1">매입 관리</a></li>
                     <li><a href="/iload#2">말소 관리</a></li>
