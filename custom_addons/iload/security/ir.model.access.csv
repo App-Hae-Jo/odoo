@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_trade_plan_user,access.trade.plan.user,model_iload_trade_plan,base.group_user,1,1,1,1
+access_iload_export_record_user,access.iload.export.record.user,model_iload_export_record,base.group_user,1,1,1,1
