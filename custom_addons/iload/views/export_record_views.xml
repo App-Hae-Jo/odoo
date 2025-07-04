@@ -1,0 +1,73 @@
+<!-- <odoo>
+    <record id="iload_export_record_view_form" model="ir.ui.view">
+        <field name="name">iload.export.record.form</field>
+        <field name="model">iload.export.record</field>
+        <field name="arch" type="xml">
+            <form string="수출 기록">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="voucher_date"/>
+                            <field name="purchase_company_id"/>
+                            <field name="company_name"/>
+                            <field name="vehicle_name"/>
+                            <field name="license_plate"/>
+                            <field name="vin"/>
+                            <field name="car_year"/>
+                            <field name="mileage"/>
+                            <field name="engine_displacement"/>
+                            <field name="fuel_type"/>
+                        </group>
+                        <group>
+                            <field name="release_price"/>
+                            <field name="purchase_price"/>
+                            <field name="empty_weight"/>
+                            <field name="length"/>
+                            <field name="height"/>
+                            <field name="width"/>
+                            <field name="cbm"/>
+                            <field name="seating_capacity"/>
+                            <field name="modification"/>
+                            <field name="export_country"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="iload_export_record_view_tree" model="ir.ui.view">
+        <field name="name">iload.export.record.tree</field>
+        <field name="model">iload.export.record</field>
+        <field name="arch" type="xml">
+            <tree string="수출 기록">
+                <field name="voucher_date"/>
+                <field name="purchase_company_id"/>
+                <field name="vehicle_name"/>
+                <field name="license_plate"/>
+                <field name="export_country"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="iload_export_record_action" model="ir.actions.act_window">
+        <field name="name">수출 기록</field>
+        <field name="res_model">iload.export.record</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                새로운 수출 기록을 생성하세요!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="iload_export_menu_root" 
+              name="수출 관리" 
+              sequence="20"
+              web_icon="iload,static/description/icon.png"/> <menuitem id="iload_export_record_menu_action" 
+              name="수출 기록 목록"
+              parent="iload_export_menu_root" 
+              action="iload_export_record_action" 
+              sequence="10"/>
+
+</odoo> -->

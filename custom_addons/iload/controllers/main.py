@@ -4,7 +4,7 @@ class ILoadController(http.Controller):
 
     @http.route('/iload', auth='public', website=True)
     def iload_home(self, **kw):
-        return http.request.render('iload.iload_home_template', {})
+        return http.request.render('iload.iload_dashboard_content', {})
 
     @http.route('/iload/upload', type='http', auth='public', csrf=False, methods=['POST'])
     def upload_file(self, **post):

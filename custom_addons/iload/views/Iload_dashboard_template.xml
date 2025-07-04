@@ -1,57 +1,105 @@
 <odoo>
-  <template id="iload_dashboard" name="iLoad Dashboard" inherit_id="iload_layout">
-    <xpath expr="//t[@t-raw='0']" position="replace">
-      <div class="dashboard">
+    <template id="iload_dashboard_content" name="iLoad Dashboard Content" inherit_id="iload.iload_layout">
+        <xpath expr="//section[@class='content']" position="replace">
+            <section class="content">
+                <div class="breadcrumb">
+                    <a href="/iload">홈</a> &gt; <span>대시보드</span>
+                </div>
+                <h1 class="dashboard-title">중고차 ERP 관리</h1>
 
-        <!-- 상단 타이틀 -->
-        <h2 class="dashboard-title">중고차 수주송 관리 ERP</h2>
+                <div class="card-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">최근 매입 차량 (이번 달)</div>
+                        <div class="stat-value">125 대</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">통관 진행 건수</div>
+                        <div class="stat-value">38 건</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">금월 수출 완료 건수</div>
+                        <div class="stat-value">92 건</div>
+                    </div>
+                    </div>
 
-        <!-- 통계 카드 4개 -->
-        <div class="card-grid">
-          <div class="stat-card">
-            <div class="stat-label">이전 관 매입 차량</div>
-            <div class="stat-value">15대</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">차량 무동관 건수</div>
-            <div class="stat-value">8건</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">삼치 매입 차량</div>
-            <div class="stat-value">₩5.200 KD</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">다입금 임가세</div>
-            <div class="stat-value">₩5.200.000</div>
-          </div>
-        </div>
+                <div class="section">
+                    <button type="button" class="btn btn-blue">신규 차량 등록하기</button>
+                </div>
 
-        <!-- 최근 진행 건 -->
-        <div class="section">
-          <h4>최근 진행 건:</h4>
-          <button class="btn btn-blue">삼치 지정 등록합겨</button>
-        </div>
+                <div class="section">
+                    <h2>최근 매입 차량 목록</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>매입일</th>
+                                <th>차량명</th>
+                                <th>차량번호</th>
+                                <th>매입가</th>
+                                <th>상태</th>
+                                <th></th> </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-07-04</td>
+                                <td>현대 그랜저 2020</td>
+                                <td>12가 3456</td>
+                                <td>2,500만원</td>
+                                <td><span class="badge success">매입 완료</span></td>
+                                <td><button type="button" class="btn btn-blue btn-sm">보기</button></td>
+                            </tr>
+                            <tr>
+                                <td>2025-07-03</td>
+                                <td>기아 K5 2021</td>
+                                <td>78나 9012</td>
+                                <td>1,800만원</td>
+                                <td><span class="badge info">매입 진행중</span></td>
+                                <td><button type="button" class="btn btn-blue btn-sm">보기</button></td>
+                            </tr>
+                            <tr>
+                                <td>2025-07-02</td>
+                                <td>BMW 520d 2019</td>
+                                <td>34다 5678</td>
+                                <td>3,200만원</td>
+                                <td><span class="badge success">매입 완료</span></td>
+                                <td><button type="button" class="btn btn-blue btn-sm">보기</button></td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
 
-        <!-- 최근 매입 차량 목록 -->
-        <div class="section">
-          <h4>최근 매입 차량 목록:</h4>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>차량번호</th>
-                <th>차종</th>
-                <th>연식</th>
-                <th>주행</th>
-                <th>매입가격</th>
-                <th>상태</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>12가 3456</td>
-                <td>이연대 Avente CN7</td>
-                <td>2021</td>
-                <td>15,000km</td>
-                <td>₩7,000,000</td>
-                <td><span class="badge success">완료</span></td>
-              </tr>
+                <div class="section">
+                    <h2>통관 신청 현황</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>신청일</th>
+                                <th>차량명</th>
+                                <th>차량번호</th>
+                                <th>진행 단계</th>
+                                <th>예정일</th>
+                                <th></th> </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-07-01</td>
+                                <td>벤츠 E300 2022</td>
+                                <td>56라 7890</td>
+                                <td><span class="badge info">서류 접수</span></td>
+                                <td>2025-07-10</td>
+                                <td><button type="button" class="btn btn-blue btn-sm">보기</button></td>
+                            </tr>
+                            <tr>
+                                <td>2025-06-28</td>
+                                <td>아우디 A6 2020</td>
+                                <td>90마 1234</td>
+                                <td><span class="badge info">검역 대기</span></td>
+                                <td>2025-07-08</td>
+                                <td><button type="button" class="btn btn-blue btn-sm">보기</button></td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </xpath>
+    </template>
+</odoo>

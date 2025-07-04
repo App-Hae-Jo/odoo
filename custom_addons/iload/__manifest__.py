@@ -19,10 +19,12 @@
         'views/component/breadcrumb_template.xml',
         'views/iload_layout_template.xml',
         'views/iload_home_template.xml',
+        'views/iload_dashboard_template.xml',
     ],
     'assets': {
         'web.assets_frontend': [
             'iload/static/src/css/iload_style.css',
+            'iload/static/src/js/iload.js',
             'iload/static/src/img/iload_logo.svg',
             'iload/static/src/img/odoo_logo.png',
         ],
