@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <template id="record_detail_template" name="Document Record Detail">
-            <t t-call="web.layout">
+            <t t-call="iload.iload_dashboard.layout">
                 <div class="oe_structure">
                     <div class="container">
                         <h1 class="mt-5 mb-4">Document Detail: <t t-esc="record.file_name"/></h1>

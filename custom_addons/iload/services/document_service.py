@@ -3,7 +3,7 @@ import base64
 from datetime import datetime
 from odoo import api, registry, SUPERUSER_ID
 
-from ..ocr.paddleocr_processor import PaddleOCRProcessor
+# from ..ocr.paddleocr_processor import PaddleOCRProcessor
 from ..llm.processor_factory import LLMProcessorFactory
 from ..utils.validator import DocumentValidator
 from ..utils.file_handler import FileHandler
@@ -15,7 +15,7 @@ class DocumentService:
     
     def __init__(self, env=None):
         self.env = env
-        self.ocr_processor = PaddleOCRProcessor()
+        # self.ocr_processor = PaddleOCRProcessor()
         self.validator = DocumentValidator()
         self.file_handler = FileHandler()
     
@@ -77,13 +77,13 @@ class DocumentService:
         
         return {'valid': True}
     
-    def _extract_text(self, file_content, filename):
-        """OCR 텍스트 추출"""
-        try:
-            return self.ocr_processor.extract_text(file_content, filename)
-        except Exception as e:
-            _logger.error(f"OCR 처리 실패: {e}")
-            return ""
+    # def _extract_text(self, file_content, filename):
+    #     """OCR 텍스트 추출"""
+    #     try:
+    #         return self.ocr_processor.extract_text(file_content, filename)
+    #     except Exception as e:
+    #         _logger.error(f"OCR 처리 실패: {e}")
+    #         return ""
     
     def _analyze_text(self, text, options):
         """텍스트 분석"""

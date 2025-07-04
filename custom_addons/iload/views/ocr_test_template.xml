@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <template id="ocr_test_template" name="OCR Test Page">
-            <t t-call="web.layout">
+            <t t-call="iload.iload_dashboard">
                 <div class="oe_structure">
                     <div class="container">
                         <h1 class="mt-5 mb-4">OCR Test</h1>

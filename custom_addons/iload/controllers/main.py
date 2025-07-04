@@ -3,7 +3,8 @@ from odoo.http import request
 import logging
 import base64
 
-from custom_addons.iload.services.document_service import DocumentService
+from ..services.document_service import DocumentService
+
 
 _logger = logging.getLogger(__name__)
 
@@ -43,25 +44,25 @@ class ILoadController(http.Controller):
             _logger.info(f"업로드된 파일 처리 중: {file_name}, OCR: {ocr_type}, LLM: {processing_method}")
 
             # document_service 인스턴스 가져오기
-            document_service = DocumentService(env=request.env)
+            # document_service = DocumentService(env=request.env)
 
             # 문서 처리 및 레코드 ID 가져오기
-            record_id = document_service.process_document_from_upload(
-                file_data=file_data.decode('utf-8'), # Base64 문자열 전달
-                file_name=file_name,
-                content_type=content_type,
-                ocr_type=ocr_type,
-                llm_method=processing_method
-            )
+            # record_id = document_service.process_document_from_upload(
+            #     file_data=file_data.decode('utf-8'), # Base64 문자열 전달
+            #     file_name=file_name,
+            #     content_type=content_type,
+            #     ocr_type=ocr_type,
+            #     llm_method=processing_method
+            # )
 
-            _logger.info(f"문서 처리 성공. 레코드 ID: {record_id}")
+            # _logger.info(f"문서 처리 성공. 레코드 ID: {record_id}")
 
-            # 결과 페이지로 리다이렉트 (또는 렌더링)
-            return request.render('iload.upload_result_template', {
-                'record_id': record_id,
-                'file_name': file_name,
-                'status_message': '파일이 성공적으로 처리되었습니다!'
-            })
+            # # 결과 페이지로 리다이렉트 (또는 렌더링)
+            # return request.render('iload.upload_result_template', {
+            #     'record_id': record_id,
+            #     'file_name': file_name,
+            #     'status_message': '파일이 성공적으로 처리되었습니다!'
+            # })
 
         except Exception as e:
             _logger.exception("파일 업로드 및 처리 중 오류 발생.")

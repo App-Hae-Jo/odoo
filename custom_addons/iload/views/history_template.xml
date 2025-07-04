@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <template id="history_template" name="Processing History">
-            <t t-call="web.layout">
+            <t t-call="iload.iload_dashboard.layout">
                 <div class="oe_structure">
                     <div class="container">
                         <h1 class="mt-5 mb-4">Processing History</h1>
