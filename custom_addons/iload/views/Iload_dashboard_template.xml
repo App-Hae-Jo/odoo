@@ -1,0 +1,57 @@
+<odoo>
+  <template id="iload_dashboard" name="iLoad Dashboard" inherit_id="iload_layout">
+    <xpath expr="//t[@t-raw='0']" position="replace">
+      <div class="dashboard">
+
+        <!-- 상단 타이틀 -->
+        <h2 class="dashboard-title">중고차 수주송 관리 ERP</h2>
+
+        <!-- 통계 카드 4개 -->
+        <div class="card-grid">
+          <div class="stat-card">
+            <div class="stat-label">이전 관 매입 차량</div>
+            <div class="stat-value">15대</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">차량 무동관 건수</div>
+            <div class="stat-value">8건</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">삼치 매입 차량</div>
+            <div class="stat-value">₩5.200 KD</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">다입금 임가세</div>
+            <div class="stat-value">₩5.200.000</div>
+          </div>
+        </div>
+
+        <!-- 최근 진행 건 -->
+        <div class="section">
+          <h4>최근 진행 건:</h4>
+          <button class="btn btn-blue">삼치 지정 등록합겨</button>
+        </div>
+
+        <!-- 최근 매입 차량 목록 -->
+        <div class="section">
+          <h4>최근 매입 차량 목록:</h4>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>차량번호</th>
+                <th>차종</th>
+                <th>연식</th>
+                <th>주행</th>
+                <th>매입가격</th>
+                <th>상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>12가 3456</td>
+                <td>이연대 Avente CN7</td>
+                <td>2021</td>
+                <td>15,000km</td>
+                <td>₩7,000,000</td>
+                <td><span class="badge success">완료</span></td>
+              </tr>
