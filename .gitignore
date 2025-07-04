@@ -55,3 +55,4 @@ venv/
 
 # log 제외
 odoo.log
+custom_addons/iload/check_tmp.sh

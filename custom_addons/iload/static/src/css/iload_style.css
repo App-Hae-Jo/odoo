@@ -16,6 +16,7 @@ header {
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
 header .logo {
     display: flex;
     gap: 5px;
@@ -26,7 +27,8 @@ header .logo {
 main.layout {
     display: flex;
     flex: 1;
-    min-height: 0; /* flex-child 안전 설정 */
+    min-height: 0;
+    /* flex-child 안전 설정 */
 }
 
 .sidebar {

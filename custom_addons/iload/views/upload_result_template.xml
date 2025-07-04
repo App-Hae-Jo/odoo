@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="upload_result_template" name="Upload Result Page">
+            <t t-call="web.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <h1 class="mt-5 mb-4">Upload Result</h1>
+
+                        <div t-if="record_id" class="alert alert-success" role="alert">
+                            <p>File uploaded and processed successfully!</p>
+                            <p>Document Record ID: <t t-esc="record_id"/></p>
+                            <p>
+                                <a t-attf-href="/iload/history/#{record_id}" class="btn btn-info">View Document Detail</a>
+                            </p>
+                        </div>
+
+                        <div t-if="error_message" class="alert alert-danger" role="alert">
+                            <p>Error processing your request:</p>
+                            <p><t t-esc="error_message"/></p>
+                        </div>
+
+                        <div class="mt-4">
+                            <a href="/iload" class="btn btn-secondary">Go back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

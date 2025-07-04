@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="ocr_test_template" name="OCR Test Page">
+            <t t-call="web.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <h1 class="mt-5 mb-4">OCR Test</h1>
+                        <form action="/iload/upload" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="imageFile" class="form-label">Upload Image/PDF for OCR</label>
+                                <input type="file" class="form-control" id="imageFile" name="image_file" required="required" accept="image/*,application/pdf"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ocrType" class="form-label">OCR Type</label>
+                                <select class="form-select" id="ocrType" name="ocr_type">
+                                    <option value="paddleocr">PaddleOCR</option>
+                                    </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Run OCR</button>
+                        </form>
+
+                        <div t-if="ocr_result" class="mt-5">
+                            <h2>OCR Result:</h2>
+                            <pre class="p-3 bg-light border rounded">
+                                <t t-esc="ocr_result"/>
+                            </pre>
+                        </div>
+                        <div t-if="ocr_error" class="mt-5 text-danger">
+                            <h2>Error:</h2>
+                            <p><t t-esc="ocr_error"/></p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

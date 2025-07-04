@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="history_template" name="Processing History">
+            <t t-call="web.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <h1 class="mt-5 mb-4">Processing History</h1>
+                        <t t-if="records">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>File Name</th>
+                                        <th>Status</th>
+                                        <th>Created On</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="records" t-as="record">
+                                        <tr>
+                                            <td><t t-esc="record.id"/></td>
+                                            <td><t t-esc="record.file_name"/></td>
+                                            <td><span t-attf-class="badge bg-{{'success' if record.state == 'processed' else 'warning' if record.state == 'pending' else 'danger'}}"><t t-esc="record.state.capitalize()"/></span></td>
+                                            <td><t t-esc="record.create_date"/></td>
+                                            <td>
+                                                <a t-attf-href="/iload/history/#{record.id}" class="btn btn-sm btn-info">View Detail</a>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-else="">
+                            <div class="alert alert-info" role="alert">
+                                No processing history found.
+                            </div>
+                        </t>
+                        <div class="mt-4">
+                            <a href="/iload" class="btn btn-secondary">Go back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

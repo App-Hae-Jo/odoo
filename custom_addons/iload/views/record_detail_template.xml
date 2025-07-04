@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="record_detail_template" name="Document Record Detail">
+            <t t-call="web.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <h1 class="mt-5 mb-4">Document Detail: <t t-esc="record.file_name"/></h1>
+
+                        <t t-if="record">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Document Information
+                                </div>
+                                <div class="card-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-3">File Name:</dt>
+                                        <dd class="col-sm-9"><t t-esc="record.file_name"/></dd>
+
+                                        <dt class="col-sm-3">Status:</dt>
+                                        <dd class="col-sm-9"><span t-attf-class="badge bg-{{'success' if record.state == 'processed' else 'warning' if record.state == 'pending' else 'danger'}}"><t t-esc="record.state.capitalize()"/></span></dd>
+
+                                        <dt class="col-sm-3">Original File:</dt>
+                                        <dd class="col-sm-9">
+                                            <t t-if="record.file_data">
+                                                <a t-attf-href="/web/content/iload.document_record/#{record.id}/file_data?download=true" class="btn btn-sm btn-outline-primary">Download File</a>
+                                            </t>
+                                            <t t-else="">N/A</t>
+                                        </dd>
+
+                                        <dt class="col-sm-3">OCR Result:</dt>
+                                        <dd class="col-sm-9">
+                                            <t t-if="record.ocr_result">
+                                                <pre class="p-2 bg-light border rounded"><t t-esc="record.ocr_result"/></pre>
+                                            </t>
+                                            <t t-else="">No OCR result available.</t>
+                                        </dd>
+
+                                        <dt class="col-sm-3">LLM Result (Structured Data):</dt>
+                                        <dd class="col-sm-9">
+                                            <t t-if="record.llm_result">
+                                                <pre class="p-2 bg-light border rounded"><t t-esc="record.llm_result"/></pre>
+                                            </t>
+                                            <t t-else="">No LLM result available.</t>
+                                        </dd>
+
+                                        <dt class="col-sm-3">Processing Log:</dt>
+                                        <dd class="col-sm-9">
+                                            <t t-if="record.processing_log">
+                                                <pre class="p-2 bg-light border rounded"><t t-esc="record.processing_log"/></pre>
+                                            </t>
+                                            <t t-else="">No processing log.</t>
+                                        </dd>
+
+                                        <dt class="col-sm-3">Created On:</dt>
+                                        <dd class="col-sm-9"><t t-esc="record.create_date"/></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="alert alert-warning" role="alert">
+                                Document record not found.
+                            </div>
+                        </t>
+
+                        <div class="mt-4">
+                            <a href="/iload/history" class="btn btn-secondary">Back to History</a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

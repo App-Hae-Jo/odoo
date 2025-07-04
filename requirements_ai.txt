@@ -1,0 +1,6 @@
+
+#OCR
+fitz
+Pillow
+paddleocr
+anthropic
