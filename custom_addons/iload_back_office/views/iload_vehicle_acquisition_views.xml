@@ -1,0 +1,109 @@
+<odoo>
+    <data>
+        <record id="view_iload_vehicle_acquisition_tree" model="ir.ui.view">
+            <field name="name">iload.vehicle.acquisition.tree</field>
+            <field name="model">iload.vehicle.acquisition</field>
+            <field name="arch" type="xml">
+                <list string="차량 매입 목록">
+                    <field name="name"/>
+                    <field name="acquisition_date"/>
+                    <field name="seller_name"/>
+                    <field name="car_registration_number"/>
+                    <field name="chassis_number"/>
+                    <field name="acquisition_amount" sum="Total Acquisition"/>
+                    <field name="deregistration_status"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_iload_vehicle_acquisition_form" model="ir.ui.view">
+            <field name="name">iload.vehicle.acquisition.form</field>
+            <field name="model">iload.vehicle.acquisition</field>
+            <field name="arch" type="xml">
+                <form string="차량 매입 정보">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="acquisition_date"/>
+                                <field name="acquisition_from_type"/>
+                                <field name="seller_name"/>
+                                <field name="seller_registration_no"/>
+                            </group>
+                            <group>
+                                <field name="seller_address"/>
+                                <field name="seller_contact_person"/>
+                                <field name="seller_phone"/>
+                                <field name="order_detail_id"/> </group>
+                        </group>
+                        <notebook>
+                            <page string="차량 상세">
+                                <group>
+                                    <group>
+                                        <field name="car_registration_number"/>
+                                        <field name="chassis_number"/>
+                                        <field name="vehicle_id"/>
+                                        <field name="vehicle_name"/>
+                                        <field name="english_vehicle_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="mileage"/>
+                                        <field name="vehicle_weight"/>
+                                        <field name="engine_displacement"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="재무 정보">
+                                <group>
+                                    <field name="acquisition_amount" widget="monetary" options="{'currency_field': 'acquisition_currency_id'}"/>
+                                    <field name="acquisition_currency_id" invisible="1"/>
+                                </group>
+                            </page>
+                            <page string="보관 및 말소">
+                                <group>
+                                    <field name="storage_location"/>
+                                    <field name="deregistration_status"/>
+                                    <field name="deregistration_date" invisible="[('deregistration_status', '=', False)]"/>
+                                </group>
+                            </page>
+                            <page string="매입 관련 문서">
+                                <field name="acquisition_document_ids">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="document_type"/>
+                                        <field name="attachment_id" widget="url" text="Download File"/>
+                                        <field name="issue_date"/>
+                                        <field name="description"/>
+                                    </list>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="name"/>
+                                                    <field name="document_type"/>
+                                                    <field name="issue_date"/>
+                                                </group>
+                                                <group>
+                                                    <field name="attachment_id"/>
+                                                    <field name="acquisition_id" invisible="1"/> <field name="order_detail_id"/>
+                                                </group>
+                                            </group>
+                                            <field name="description"/>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

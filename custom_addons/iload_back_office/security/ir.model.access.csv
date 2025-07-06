@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_iload_order_user,iload.order.user,model_iload_order,base.group_user,1,1,1,1
+access_iload_order_detail_user,iload.order.detail.user,model_iload_order_detail,base.group_user,1,1,1,1
+access_iload_vehicle_user,iload.vehicle.user,model_iload_vehicle,base.group_user,1,1,1,1
+access_iload_vehicle_acquisition_user,iload.vehicle.acquisition.user,model_iload_vehicle_acquisition,base.group_user,1,1,1,1
+access_iload_vehicle_acquisition_document_user,iload.vehicle.acquisition.document.user,model_iload_vehicle_acquisition_document,base.group_user,1,1,1,1

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit_iload" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.iload</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_type']" position="after">
+                    <field name="is_iload_customer"/>
+                    <span>Iload 고객사</span>
+                </xpath>
+                <xpath expr="//page[@name='sales_purchases']" position="inside">
+                    <group string="iLoad 운송 정보">
+                        <field name="iload_customer_code"/>
+                        <field name="customs_clearance_no"/>
+                        <field name="currency_id"/>
+                        <field name="destination_country_id"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        </data>
+</odoo>

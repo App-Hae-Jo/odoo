@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <record id="view_iload_order_detail_tree" model="ir.ui.view">
+            <field name="name">iload.order.detail.tree</field>
+            <field name="model">iload.order.detail</field>
+            <field name="arch" type="xml">
+                <list string="주문 상세 목록" decoration-success="state == 'delivered'" decoration-muted="state == 'cancelled'">
+                    <field name="order_id"/>
+                    <field name="sequence"/>
+                    <field name="vehicle_id"/>
+                    <field name="chassis_number"/>
+                    <field name="amount" sum="Total Amount"/>
+                    <field name="requested_delivery_date"/>
+                    <field name="state" widget="badge" decoration-warning="state in ('vehicle_acquiring', 'shipping_in_progress')" decoration-info="state == 'draft'"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_iload_order_detail_form" model="ir.ui.view">
+            <field name="name">iload.order.detail.form</field>
+            <field name="model">iload.order.detail</field>
+            <field name="arch" type="xml">
+                <form string="주문 상세">
+                    <sheet>
+                        <header>
+                            <field name="state" widget="statusbar" statusbar_visible="draft,vehicle_acquiring,customs_clearance_in_progress,shipping_in_progress,delivered"/>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="order_id" readonly="1"/>
+                                <field name="sequence"/>
+                                <field name="requested_delivery_date"/>
+                            </group>
+                            <group>
+                                <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="currency_id" invisible="1"/>
+                            </group>
+                        </group>
+                        <group string="차량 정보">
+                            <group>
+                                <field name="vehicle_id"/>
+                                <field name="fuel_type"/>
+                                <field name="vehicle_year"/>
+                                <field name="chassis_number"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="매입 문서">
+                                <field name="acquisition_document_ids">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="document_type"/>
+                                        <field name="acquisition_id"/>
+                                        <field name="attachment_id" widget="url" text="Download File"/>
+                                        <field name="issue_date"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

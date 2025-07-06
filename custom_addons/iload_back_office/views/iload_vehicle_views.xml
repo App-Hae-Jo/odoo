@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_iload_vehicle_tree" model="ir.ui.view">
+            <field name="name">iload.vehicle.tree</field>
+            <field name="model">iload.vehicle</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="차량 목록">
+                    <field name="name"/>
+                    <field name="vehicle_type"/>
+                    <field name="is_active"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_iload_vehicle_form" model="ir.ui.view">
+            <field name="name">iload.vehicle.form</field>
+            <field name="model">iload.vehicle</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="차량 정보">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="vehicle_type"/>
+                                <field name="is_active"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
