@@ -16,6 +16,10 @@ class IloadOcrUploadVehicleWizard(models.TransientModel):
     # 위자드 팝업에 표시될 필드들
     document = fields.Binary(string="문서 파일", required=True) # 파일 업로드 필드
     document_name = fields.Char(string="파일 이름") # 업로드된 파일의 이름
+    document_type = fields.Selection([
+        ('contract', '매매 계약서'),
+        ('registration_cert', '자동차 등록증')
+    ], string='문서 유형', required=True, default='contract', help="문서의 분류입니다.")
 
     @api.model
     def default_get(self, fields_list):

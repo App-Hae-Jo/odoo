@@ -7,6 +7,7 @@
                 <form string="OCR 문서 업로드">
                     <sheet>
                         <group>
+                            <field name="document_type"/>
                             <field name="document" filename="document_name"/>
                             <field name="document_name" invisible="1"/>
                         </group>
