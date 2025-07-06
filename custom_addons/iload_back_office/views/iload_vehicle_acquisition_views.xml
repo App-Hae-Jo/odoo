@@ -2,7 +2,9 @@
     <data>
         <!-- action 정의 -->
         <record id="action_iload_vehicle_acquisition_view" model="ir.actions.act_window">
-            <field name="name">매입 관리</field>
+            <field name="name">
+                매입 관리
+            </field>
             <field name="res_model">iload.vehicle.acquisition</field>
             <field name="view_mode">list,form</field>
             <field name="help" type="html">
@@ -10,6 +12,7 @@
                     매입한 차량을 관리해보세요!
                 </p>
             </field>
+            <field name="binding_model_id" ref="model_iload_vehicle_acquisition"/>
         </record>
 
         <record id="view_iload_vehicle_acquisition_list" model="ir.ui.view">
@@ -17,6 +20,12 @@
             <field name="model">iload.vehicle.acquisition</field>
             <field name="arch" type="xml">
                 <list string="차량 매입 목록">
+                    <header>
+                        <button name="%(iload_back_office.action_iload_ocr_upload_wizard)d"
+                                type="action"
+                                string="OCR 문서 업로드"
+                                class="oe_highlight" display="always"/>
+                    </header>
                     <field name="name"/>
                     <field name="acquisition_date"/>
                     <field name="seller_name"/>

@@ -21,9 +21,10 @@
         'security/ir.model.access.csv',
 
         # 시퀀스 (주문 및 매입 번호 자동 생성을 위해)
-        'data/iload_sequence.xml',           
-
-        # # 뷰 파일들
+        'data/iload_sequence.xml',  
+        # ocr 관련 wizard가 먼저되야되나 ?         
+        'views/ocr_upload_wizard_views.xml',
+        # 뷰 파일들
         'views/res_partner_views.xml', # 파트너 모델 확장 뷰
         'views/iload_vehicle_views.xml', # 차량 모델 마스터 뷰
         'views/iload_order_views.xml',       # 운송 주문 뷰

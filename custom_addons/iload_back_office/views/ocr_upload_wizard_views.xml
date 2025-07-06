@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <record id="action_iload_ocr_upload_wizard" model="ir.actions.act_window">
+            <field name="name">OCR 문서 업로드</field>
+            <field name="res_model">iload.ocr.upload.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field> <field name="view_id" ref="iload_back_office.view_iload_ocr_upload_wizard_form"/>
+            </record>
+
+        <record id="view_iload_ocr_upload_wizard_form" model="ir.ui.view">
+            <field name="name">iload.ocr.upload.wizard.form</field>
+            <field name="model">iload.ocr.upload.wizard</field>
+            <field name="arch" type="xml">
+                <form string="OCR 문서 업로드">
+                    <sheet>
+                        <group>
+                            <field name="document" filename="document_name"/>
+                            <field name="document_name" invisible="1"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_upload_and_process_ocr" type="object"
+                                string="OCR 처리 및 매입 등록" class="oe_highlight"/>
+                        <button string="취소" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
