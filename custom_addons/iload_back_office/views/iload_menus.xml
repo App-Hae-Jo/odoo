@@ -1,19 +1,32 @@
 <odoo>
     <data>
         <menuitem id="menu_iload_root"
-                  name="Iload Backoffice"
-                  sequence="10"
-                  web_icon="iload_back_office,static/description/icon.png"/>
+            name="Iload Backoffice"
+            sequence="10"
+            web_icon="iload_back_office,static/description/icon.png"/>
 
+        <!-- 주문파트 -->
         <menuitem id="menu_iload_orders"
-                  name="주문 관리"
-                  parent="menu_iload_root"
-                  sequence="10"/>
+            name="주문 관리"
+            parent="menu_iload_root"
+            sequence="10"/>
 
         <menuitem id="menu_iload_order_list"
-                  name="운송 주문"
-                  parent="menu_iload_orders"
-                  action="action_iload_order_view"  sequence="10"/>
-                  
-        </data>
+            name="주문 내역"
+            parent="menu_iload_orders"
+            action="action_iload_order_view"  sequence="10"/>
+        
+        <!-- 구매파트 -->
+        <menuitem id="menu_iload_vehicle_acquisition"
+            name="차량 매입 관리"
+            parent="menu_iload_root"
+            sequence="11"
+        />
+        <menuitem id="menu_iload_vehicle_acquisition_list"
+            name="차량 매입 현황"
+            parent="menu_iload_vehicle_acquisition"
+            action="action_iload_vehicle_acquisition_view"
+            sequence="11"
+        />
+    </data>
 </odoo>
