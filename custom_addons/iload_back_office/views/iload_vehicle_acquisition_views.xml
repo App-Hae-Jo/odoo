@@ -29,7 +29,6 @@
                     <field name="name"/>
                     <field name="acquisition_date"/>
                     <field name="seller_name"/>
-                    <field name="vehicle_name"/>
                     <field name="mileage"/>
                     <field name="acquisition_from_type"/>
                     <field name="car_registration_number"/>
@@ -38,6 +37,9 @@
                     <field name="acquisition_amount" sum="Total Acquisition"/>
                     <field name="deregistration_status"/>
                     <field name="deregistration_date"/>
+                    <field name="storage_location"/>
+                    <field name="deregistration_status"/>
+                    <field name="deregistration_date" invisible="[('deregistration_status', '=', False)]"/>
                 </list>
             </field>
         </record>
@@ -52,72 +54,56 @@
                             <h1><field name="name" readonly="1"/></h1>
                         </div>
                         <group>
-                            <group>
+                            <group string="판매자 정보">
                                 <field name="acquisition_date"/>
                                 <field name="acquisition_from_type"/>
                                 <field name="seller_name"/>
                                 <field name="seller_registration_no"/>
+                                <field name="acquisition_amount" widget="monetary" options="{'currency_field': 'acquisition_currency_id'}"/>
+                                <field name="acquisition_currency_id" invisible="1"/>
                             </group>
-                            <group>
+                            <group string="판매자 주소 및 연락처">
                                 <field name="seller_address"/>
                                 <field name="seller_contact_person"/>
                                 <field name="seller_phone"/>
                             </group>
-                        </group>
-                        <notebook>
-                            <page string="차량 상세">
+                            <group string="차량 정보">
                                 <group>
-                                    <group>
-                                        <field name="car_registration_number"/>
-                                        <field name="chassis_number"/>
-                                        <field name="vehicle_id"/>
-                                        <field name="vehicle_name"/>
-                                        <field name="english_vehicle_name"/>
-                                    </group>
-                                    <group>
-                                        <field name="mileage"/>
-                                        <field name="vehicle_weight"/>
-                                        <field name="engine_displacement"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="재무 정보">
-                                <group>
-                                    <field name="acquisition_amount" widget="monetary" options="{'currency_field': 'acquisition_currency_id'}"/>
-                                    <field name="acquisition_currency_id" invisible="1"/>
-                                </group>
-                            </page>
-                            <page string="보관 및 말소">
-                                <group>
-                                    <field name="storage_location"/>
+                                    <field name="vehicle_id"/>
+                                    <field name="english_vehicle_name"/>
+                                    <field name="car_registration_number"/>
+                                    <field name="chassis_number"/>
                                     <field name="deregistration_status"/>
                                     <field name="deregistration_date" invisible="[('deregistration_status', '=', False)]"/>
+                                    <field name="storage_location"/>
                                 </group>
-                            </page>
+                                <group>
+                                    <field name="mileage"/>
+                                    <field name="vehicle_weight"/>
+                                    <field name="engine_displacement"/>
+                                </group>
+                            </group>
+                        </group>
+                        <notebook>
                             <page string="매입 관련 문서">
                                 <field name="acquisition_document_ids">
                                     <list>
-                                        <field name="name"/>
+                                        <field name="name" />
+                                        <field name="attachment" filename="name"/>
                                         <field name="document_type"/>
-                                        <field name="attachment_id" widget="url" text="Download File"/>
                                         <field name="issue_date"/>
                                         <field name="description"/>
                                     </list>
                                     <form>
                                         <sheet>
                                             <group>
-                                                <group>
-                                                    <field name="name"/>
-                                                    <field name="document_type"/>
-                                                    <field name="issue_date"/>
-                                                </group>
-                                                <group>
-                                                    <field name="attachment_id"/>
-                                                    <field name="acquisition_id" invisible="1"/>
-                                                    <field name="order_detail_id"/>
-                                                </group>
+                                                <field name="acquisition_id" invisible="1"/>
+                                                <field name="name" invisible="1"/>
+                                                <field name="attachment" filename="name"/>
+                                                <field name="document_type"/>
+                                                <field name="issue_date"/>
+                                                <field name="description"/>
                                             </group>
-                                            <field name="description"/>
                                         </sheet>
                                     </form>
                                 </field>

@@ -22,12 +22,17 @@ class ILoadVehicleAcquisitionDocument(models.Model):
         help="이 문서가 관련된 차량 매입 정보입니다."
     )
 
-    attachment_id = fields.Many2one(
-        'ir.attachment',
+    attachment = fields.Binary(
         string='첨부 파일',
         required=True,
-        ondelete='restrict',
+        attachment=True,
         help="실제 스캔 문서나 파일을 첨부합니다."
+    )
+
+    mimetype = fields.Char(
+        string="Mime Type",
+        store=True,
+        copy=False,
     )
 
     order_detail_id = fields.Many2one(
@@ -71,11 +76,11 @@ class ILoadVehicleAcquisitionDocument(models.Model):
         help="관련 매입 건의 판매처 이름입니다."
     )
 
-    @api.constrains('attachment_id')
+    @api.constrains('attachment')
     def _check_attachment_mimetype(self):
         """첨부 파일이 PDF, 이미지 파일 등 적절한 형식인지 확인할 수 있습니다."""
         for rec in self:
-            if rec.attachment_id and rec.attachment_id.mimetype not in ['application/pdf', 'image/jpeg', 'image/png']:
+            if rec.attachment and rec.mimetype not in ['application/pdf', 'image/jpeg', 'image/png']:
                 # raise ValidationError("허용되지 않는 파일 형식입니다. PDF 또는 이미지 파일만 첨부할 수 있습니다.")
                 pass
 

@@ -10,7 +10,7 @@
                     <field name="acquisition_id"/>
                     <field name="acquisition_chassis_number"/>
                     <field name="order_detail_id"/>
-                    <field name="attachment_id" widget="url" text="Download"/>
+                    <field name="attachment" widget="url" text="Download"/>
                     <field name="issue_date"/>
                 </list>
             </field>
@@ -30,7 +30,7 @@
                                 <field name="order_detail_id"/>
                             </group>
                             <group>
-                                <field name="attachment_id"/>
+                                <field name="attachment"/>
                                 <field name="issue_date"/>
                                 <field name="acquisition_chassis_number" readonly="1"/>
                                 <field name="acquisition_seller_name" readonly="1"/>

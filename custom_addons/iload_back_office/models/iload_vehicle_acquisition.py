@@ -1,5 +1,3 @@
-# iload/models/iload_vehicle_acquisition.py (수정)
-
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
 from datetime import date
@@ -62,7 +60,6 @@ class ILoadVehicleAcquisition(models.Model):
         string='차량 모델 (시스템)',
         help="시스템에 등록된 차량 모델과 매칭합니다. 일관된 데이터 관리에 유용합니다."
     )
-    vehicle_name = fields.Char(string='차량명 (매입)', help="매입 문서에 기록된 차량의 모델명입니다.")
     english_vehicle_name = fields.Char(string='영문 차량명', help="차량의 영문 모델명입니다.")
     
     mileage = fields.Float(string='주행거리 (km)', help="매입 당시 차량의 주행거리입니다.")

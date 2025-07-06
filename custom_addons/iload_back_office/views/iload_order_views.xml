@@ -29,10 +29,10 @@
             <field name="name">iload.order.form</field>
             <field name="model">iload.order</field>
             <field name="arch" type="xml">
-                <form>
+                <form string="주문">
                     <header>
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,in_progress,completed"/>
-                    </header>
+                        </header>
                     <sheet>
                         <div class="oe_title">
                             <h1><field name="name"/></h1>
@@ -45,7 +45,6 @@
                             </group>
                             <group>
                                 <field name="order_date"/>
-                                <!-- <field name="delivery_date"/> -->
                                 <field name="currency_id" groups="base.group_multi_currency"/>
                                 <field name="total_amount"/>
                             </group>
@@ -55,18 +54,16 @@
                                 <field name="order_detail_ids">
                                     <list editable="bottom"> <field name="sequence" widget="handle"/>
                                         <field name="vehicle_id"/>
+                                        <field name="acquisition_id" domain="[('vehicle_id', '=', vehicle_id)]"/>
                                         <field name="chassis_number"/>
                                         <field name="fuel_type"/>
-                                        <field name="amount"/>
+                                        <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                                         <field name="requested_delivery_date"/>
                                         <field name="state"/>
                                         <field name="currency_id" invisible="1"/>
                                     </list>
                                 </field>
                             </page>
-                            <!-- <page string="추가 정보">
-                                <field name="description"/>
-                            </page> -->
                         </notebook>
                     </sheet>
                 </form>

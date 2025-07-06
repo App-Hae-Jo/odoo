@@ -54,7 +54,7 @@
                                         <field name="name"/>
                                         <field name="document_type"/>
                                         <field name="acquisition_id"/>
-                                        <field name="attachment_id" widget="url" text="Download File"/>
+                                        <field name="attachment" widget="url" text="Download File"/>
                                         <field name="issue_date"/>
                                     </list>
                                 </field>
