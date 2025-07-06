@@ -31,7 +31,7 @@
         'views/iload_order_detail_views.xml', # 운송 주문 상세 뷰
         'views/iload_vehicle_acquisition_views.xml', # 차량 매입 뷰
         'views/iload_vehicle_acquisition_document_views.xml', # 차량 매입 문서 뷰
-        
+
         # 메뉴 아이템 (모든 뷰 로드 후 메뉴 연결)
         'views/iload_menus.xml',             
     ],
