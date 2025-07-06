@@ -1,8 +1,8 @@
 <odoo>
     <data>
-        <record id="view_iload_ocr_upload_wizard_form" model="ir.ui.view">
-            <field name="name">iload.ocr.upload.wizard.form</field>
-            <field name="model">iload.ocr.upload.wizard</field>
+        <record id="view_iload_ocr_upload_vehicle_wizard_form" model="ir.ui.view">
+            <field name="name">iload.ocr.upload.vehicle.wizard.form</field>
+            <field name="model">iload.ocr.upload.vehicle.wizard</field>
             <field name="arch" type="xml">
                 <form string="OCR 문서 업로드">
                     <sheet>
@@ -20,11 +20,11 @@
             </field>
         </record>
 
-        <record id="action_iload_ocr_upload_wizard" model="ir.actions.act_window">
-            <field name="name">OCR 문서 업로드</field>
-            <field name="res_model">iload.ocr.upload.wizard</field>
+        <record id="action_iload_ocr_upload_vehicle_wizard" model="ir.actions.act_window">
+            <field name="name">구매 문서 OCR</field>
+            <field name="res_model">iload.ocr.upload.vehicle.wizard</field>
             <field name="view_mode">form</field>
-            <field name="target">new</field> <field name="view_id" ref="iload_back_office.view_iload_ocr_upload_wizard_form"/>
+            <field name="target">new</field> <field name="view_id" ref="iload_back_office.view_iload_ocr_upload_vehicle_wizard_form"/>
         </record>
     </data>
 </odoo>

@@ -9,9 +9,9 @@ from odoo.tools.safe_eval import safe_eval # <--- 이 부분이 핵심 수정입
 
 _logger = logging.getLogger(__name__) # 로그를 위한 로거 생성
 
-class ILoadOCRUPLOADWIZARD(models.TransientModel):
-    _name = 'iload.ocr.upload.wizard' # 모델의 기술 이름
-    _description = 'OCR 문서 업로드 마법사' # Odoo UI에 표시될 설명
+class IloadOcrUploadVehicleWizard(models.TransientModel):
+    _name = 'iload.ocr.upload.vehicle.wizard' # 모델의 기술 이름
+    _description = '구매 문서 OCR 업로드 마법사' # Odoo UI에 표시될 설명
 
     # 위자드 팝업에 표시될 필드들
     document = fields.Binary(string="문서 파일", required=True) # 파일 업로드 필드

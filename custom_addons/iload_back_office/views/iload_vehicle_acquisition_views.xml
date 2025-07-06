@@ -21,7 +21,7 @@
             <field name="arch" type="xml">
                 <list string="차량 매입 목록">
                     <header>
-                        <button name="%(iload_back_office.action_iload_ocr_upload_wizard)d"
+                        <button name="%(iload_back_office.action_iload_ocr_upload_vehicle_wizard)d"
                                 type="action"
                                 string="OCR 문서 업로드"
                                 class="oe_highlight" display="always"/>
