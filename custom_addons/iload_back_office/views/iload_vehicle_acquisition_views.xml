@@ -42,6 +42,7 @@
                     <field name="deregistration_status"/>
                     <field name="deregistration_date"/>
                     <field name="storage_location"/>
+                    <field name="fuel_type"/>
                 </list>
             </field>
         </record>
@@ -73,11 +74,13 @@
                                 <group>
                                     <field name="vehicle_id"/>
                                     <field name="english_vehicle_name"/>
+                                    <field name="fuel_type"/>
                                     <field name="car_registration_number"/>
                                     <field name="chassis_number"/>
                                     <field name="deregistration_status"/>
                                     <field name="deregistration_date" invisible="[('deregistration_status', '=', False)]"/>
                                     <field name="storage_location"/>
+                                    <field name="order_detail_id"/>
                                 </group>
                                 <group>
                                     <field name="mileage"/>
@@ -109,6 +112,9 @@
                                         </sheet>
                                     </form>
                                 </field>
+                            </page>
+                            <page string="주문 상세">
+                                <field name="order_detail_id"/>
                             </page>
                         </notebook>
                     </sheet>
