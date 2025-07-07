@@ -32,6 +32,7 @@ class IloadOcrUploadVehicleWizard(models.TransientModel):
         self.ensure_one() # 이 메서드가 단일 위자드 레코드에 대해 실행되도록 보장
 
         # --- 1. 업로드된 파일 로그 출력 (실제 OCR 엔진 연동은 이 부분에 들어갑니다) ---
+        # HAJINTODO
         if self.document and self.document_name:
             _logger.info(f"문서 업로드 감지: 파일명 '{self.document_name}'")
             try:

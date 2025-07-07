@@ -10,6 +10,13 @@ class IloadVehicleDeregistrationWizard(models.TransientModel):
     deregistration_certificate = fields.Binary(string="말소 확인증", required=True)
     file_name = fields.Char(string="파일 이름")
 
+    # HAJINTODO
+    # 여기에 말소확인증으로 ocr 해서 차대번호같은걸로 구매한 목록에서 찾아서 알아서 말소상태로 바꿔 줄수있을듯
+    # self.env(iload.vehicle.acquisition) 에서 찾으면 될듯합니다요 !
+    def ocr(self):
+        return{}
+
+
     def action_confirm(self):
         """
         말소 확인증을 업로드하고, 선택된 차량의 말소 상태를 업데이트합니다.
