@@ -1,7 +1,7 @@
 # custom_addons/iload_back_office/__manifest__.py
 
 {
-    'name': 'iLoad_BackOffice',
+    'name': '아이로드',
     'version': '1.0',
     'category': '운송 / 물류',
     'summary': 'iLoad 백오피스: 운송 주문 및 차량 매입 관리', # 요약 변경
@@ -37,12 +37,11 @@
         'views/iload_menus.xml',             
     ],
     'assets': {
-        # 필요한 경우, 백오피스에 로드될 커스텀 JS/CSS 파일을 여기에 추가합니다.
-        # 예: 'web.assets_backend': ['/iload/static/src/js/my_script.js',],
+        'web.assets_backend': ['iload_back_office/static/src/css/iload_back_office.css',],
     },
     'installable': True,
     'application': True,
     'auto_install': False,
     # 'license': 'LGPL-3',      # 모듈의 라이선스 (권장)
-    # 'web_icon': 'iload_back_office,static/description/icon.png', # 앱스 및 메뉴에 표시될 아이콘 경로 (선택 사항)
+        'web_icon': 'iload_back_office,static/src/img/iload_logo.svg', # 앱스 및 메뉴에 표시될 아이콘 경로 (선택 사항)
 }

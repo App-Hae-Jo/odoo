@@ -31,20 +31,28 @@ class ILoadVehicleAcquisitionDocument(models.Model):
 
     mimetype = fields.Char(
         string="Mime Type",
+        compute="_compute_mimetype",
         store=True,
         copy=False,
     )
+
+    @api.depends('attachment', 'name')
+    def _compute_mimetype(self):
+        for doc in self:
+            if doc.attachment:
+                # _compute_mimetype은 mimetype 문자열을 직접 반환합니다.
+                values = {'name': doc.name, 'datas': doc.attachment}
+                mimetype = self.env['ir.attachment']._compute_mimetype(values)
+                doc.mimetype = mimetype
+            else:
+                doc.mimetype = False
 
     order_detail_id = fields.Many2one(
         'iload.order.detail',
         string='관련 주문 상세',
         help="이 문서가 특정 주문 상세 라인(차량)과 관련된 경우 연결합니다.",
-        ondelete='set null',
-        domain="[('order_id', '=', acquisition_id.order_detail_id.order_id)]" 
-        # 도메인 조건 재검토: acquisition_id.order_detail_id.order_id 가 없을 수 있으므로 좀 더 유연하게
-        # ['|', ('order_id', '=', False), ('order_id', '=', acquisition_id.order_detail_id.order_id)] 또는
-        # 관련 매입 건의 차대번호와 동일한 주문 상세를 필터링하는 것이 더 견고할 수 있습니다.
-        # domain="[('chassis_number', '=', acquisition_id.chassis_number)]"  <= 이 방식이 더 좋음
+        ondelete='set null'
+        # domain은 모델 레벨에서 동적으로 평가될 수 없으므로 제거합니다.
     )
     
     document_type = fields.Selection([

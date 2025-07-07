@@ -1,44 +1,82 @@
 <odoo>
     <data>
-        <record id="view_iload_vehicle_acquisition_document_tree" model="ir.ui.view">
-            <field name="name">iload.vehicle.acquisition.document.tree</field>
+        <!-- 매입 관련 문서 리스트 뷰 정의 -->
+        <record id="view_iload_vehicle_acquisition_document_list" model="ir.ui.view">
+            <field name="name">iload.vehicle.acquisition.document.list</field>
             <field name="model">iload.vehicle.acquisition.document</field>
             <field name="arch" type="xml">
-                <list string="매입 문서 목록">
-                    <field name="name"/>
-                    <field name="document_type"/>
-                    <field name="acquisition_id"/>
-                    <field name="acquisition_chassis_number"/>
-                    <field name="order_detail_id"/>
-                    <field name="attachment" widget="url" text="Download"/>
-                    <field name="issue_date"/>
+                <list string="매입 관련 문서">
+                    <field name="acquisition_id" string="관련 매입 건"/>
+                    <field name="acquisition_chassis_number" string="차대번호"/>
+                    <field name="name" string="문서명"/>
+                    <field name="document_type" string="문서 유형"/>
+                    <field name="issue_date" string="발행일"/>
                 </list>
             </field>
         </record>
 
-        <record id="view_iload_vehicle_acquisition_document_form" model="ir.ui.view">
-            <field name="name">iload.vehicle.acquisition.document.form</field>
+        <!-- 매입 관련 문서 칸반 뷰 정의 (썸네일 수정) -->
+        <record id="view_iload_vehicle_acquisition_document_kanban" model="ir.ui.view">
+            <field name="name">iload.vehicle.acquisition.document.kanban</field>
             <field name="model">iload.vehicle.acquisition.document</field>
             <field name="arch" type="xml">
-                <form string="매입 문서">
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="name"/>
-                                <field name="document_type"/>
-                                <field name="acquisition_id"/>
-                                <field name="order_detail_id"/>
-                            </group>
-                            <group>
-                                <field name="attachment"/>
-                                <field name="issue_date"/>
-                                <field name="acquisition_chassis_number" readonly="1"/>
-                                <field name="acquisition_seller_name" readonly="1"/>
-                            </group>
-                        </group>
-                        <field name="description"/>
-                    </sheet>
-                </form>
+                <kanban default_group_by="document_type" class="o_kanban_mobile">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="document_type"/>
+                    <field name="issue_date"/>
+                    <field name="acquisition_id"/>
+                    <field name="acquisition_chassis_number"/>
+                    <field name="mimetype"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_manage_pane dropdown float-end">
+                                    <a class="o_kanban_manage_toggle_button" data-bs-toggle="dropdown" href="#" aria-label="Manage" title="Manage">
+                                        <i class="fa fa-ellipsis-v" role="img" aria-label="Manage"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a role="menuitem" type="delete" class="dropdown-item">삭제</a>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_image o_kanban_logo_container">
+                                    <img src="/iload_back_office/static/src/img/iload_logo.svg" alt="Document" class="o_image_64_contain"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <div class="float-end">
+                                        <div class="o_kanban_manage_pane dropdown">
+                                            <a class="o_kanban_manage_toggle_button" data-bs-toggle="dropdown" href="#" aria-label="Manage" title="Manage">
+                                                <i class="fa fa-ellipsis-v" role="img" aria-label="Manage"/>
+                                            </a>
+                                            <div class="dropdown-menu" role="menu">
+                                                <a role="menuitem" type="delete" class="dropdown-item">삭제</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                    <div class="text-muted">
+                                        <span>차대번호: <field name="acquisition_chassis_number"/></span>
+                                    </div>
+                                    <div class="text-muted">
+                                        <span>발행일: <field name="issue_date"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- 매입 관련 문서 액션 정의 -->
+        <record id="action_iload_vehicle_acquisition_document_view" model="ir.actions.act_window">
+            <field name="name">매입 관련 문서</field>
+            <field name="res_model">iload.vehicle.acquisition.document</field>
+            <field name="view_mode">kanban,list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    아직 등록된 매입 관련 문서가 없습니다.
+                </p>
             </field>
         </record>
     </data>

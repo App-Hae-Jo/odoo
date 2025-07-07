@@ -28,5 +28,11 @@
             action="action_iload_vehicle_acquisition_view"
             sequence="11"
         />
+        <menuitem
+            id="menu_iload_vehicle_acquisition_document"
+            name="매입 관련 문서"
+            parent="iload_back_office.menu_iload_vehicle_acquisition"
+            action="action_iload_vehicle_acquisition_document_view"
+            sequence="20"/>
     </data>
 </odoo>
