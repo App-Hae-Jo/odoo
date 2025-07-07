@@ -31,6 +31,8 @@
                                 class="oe_highlight"/>
                     </header>
                     <field name="name"/>
+                    <field name="vehicle_id"/>
+                    <field name="fuel_type"/>
                     <field name="acquisition_date"/>
                     <field name="seller_name"/>
                     <field name="mileage"/>
@@ -42,7 +44,6 @@
                     <field name="deregistration_status"/>
                     <field name="deregistration_date"/>
                     <field name="storage_location"/>
-                    <field name="fuel_type"/>
                 </list>
             </field>
         </record>
@@ -80,12 +81,21 @@
                                     <field name="deregistration_status"/>
                                     <field name="deregistration_date" invisible="[('deregistration_status', '=', False)]"/>
                                     <field name="storage_location"/>
-                                    <field name="order_detail_id"/>
                                 </group>
                                 <group>
                                     <field name="mileage"/>
                                     <field name="vehicle_weight"/>
                                     <field name="engine_displacement"/>
+                                </group>
+                            </group>
+                            <group string="주문 정보">
+                                <field name="order_detail_id" string="차량"/>
+                                <field name="no_order_detail_message" invisible="order_detail_id != False" nolabel="1"/>
+                                <group invisible="order_detail_id == False">
+                                    <field name="order_detail_amount" string="주문 금액" readonly="1"/>
+                                    <field name="order_detail_currency_id" string="통화" readonly="1"/>
+                                    <field name="order_detail_requested_delivery_date" string="주문 상세 납기 요청일" readonly="1"/>
+                                    <field name="order_detail_description" string="메모" readonly="1"/>
                                 </group>
                             </group>
                         </group>
@@ -112,9 +122,6 @@
                                         </sheet>
                                     </form>
                                 </field>
-                            </page>
-                            <page string="주문 상세">
-                                <field name="order_detail_id"/>
                             </page>
                         </notebook>
                     </sheet>

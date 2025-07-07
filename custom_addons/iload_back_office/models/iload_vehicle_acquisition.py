@@ -99,6 +99,46 @@ class ILoadVehicleAcquisition(models.Model):
         help="이 매입 차량이 특정 주문 상세 라인(차량)을 충족하는 경우 연결됩니다.",
         ondelete='set null'
     )
+
+    # Related fields from iload.order.detail
+    order_detail_amount = fields.Monetary(
+        string='주문 금액',
+        related='order_detail_id.amount',
+        currency_field='order_detail_currency_id',
+        readonly=True,
+        store=True,
+        help="연결된 주문 상세의 주문 금액입니다."
+    )
+    order_detail_currency_id = fields.Many2one(
+        'res.currency',
+        string='주문 통화',
+        related='order_detail_id.currency_id',
+        readonly=True,
+        store=True,
+        help="연결된 주문 상세의 통화입니다."
+    )
+    order_detail_state = fields.Selection(
+        string='주문 상세 상태',
+        related='order_detail_id.state',
+        readonly=True,
+        store=True,
+        help="연결된 주문 상세의 현재 상태입니다."
+    )
+    order_detail_requested_delivery_date = fields.Date(
+        string='주문 상세 납기 요청일',
+        related='order_detail_id.requested_delivery_date',
+        readonly=True,
+        store=True,
+        help="연결된 주문 상세의 납기 요청일입니다."
+    )
+    order_detail_description = fields.Text(
+        string='주문 상세 메모',
+        related='order_detail_id.description',
+        readonly=True,
+        store=True,
+        help="연결된 주문 상세의 추가 설명입니다."
+    )
+
     # 새로 추가된 필드: 이 매입 건과 관련된 문서들
     acquisition_document_ids = fields.One2many(
         'iload.vehicle.acquisition.document', # 연결될 매입 문서 모델의 _name
@@ -106,6 +146,38 @@ class ILoadVehicleAcquisition(models.Model):
         string='매입 관련 문서',
         help="이 차량 매입 건과 관련된 모든 문서들입니다."
     )
+    fuel_type = fields.Selection([
+        ('G', '가솔린'),
+        ('D', '디젤'),
+        ('LPG', 'LPG'),
+        ('EV', '전기'),
+        ('HY', '하이브리드'),
+        ('ETC', '기타'),
+    ], string='연료 구분', default='ETC', required=True, help="이 차량의 연료 유형입니다.")
+
+    no_order_detail_message = fields.Char(
+        string="주문 상세 정보 없음",
+        compute="_compute_no_order_detail_message",
+        help="연결된 주문 상세 정보가 없을 때 표시되는 메시지입니다."
+    )
+
+    @api.depends('order_detail_id')
+    def _compute_no_order_detail_message(self):
+        for rec in self:
+            if not rec.order_detail_id:
+                rec.no_order_detail_message = "연결된 주문 상세 정보가 없습니다."
+            else:
+                rec.no_order_detail_message = False
+
+    @api.onchange('order_detail_id')
+    def _onchange_order_detail_id(self):
+        """
+        관련 주문 상세가 선택되거나 변경될 때, 해당 주문 상세의 차대 번호와 매입 정보를 업데이트합니다.
+        (onchange는 폼 뷰에만 영향을 미치며, 실제 DB 저장은 create/write 메서드에서 처리됩니다.)
+        """
+        # onchange에서는 현재 레코드의 필드만 변경합니다。
+        # 다른 레코드(order_detail_id)의 필드 변경은 create/write 메서드에서 처리됩니다。
+        pass
 
     _sql_constraints = [
         ('car_registration_number_uniq', 'unique (car_registration_number)', '자동차등록번호는 유일해야 합니다!'),
@@ -116,6 +188,23 @@ class ILoadVehicleAcquisition(models.Model):
     def _compute_display_name(self):
         for rec in self:
             rec.display_name = f"{rec.name} ({rec.car_registration_number or '미등록'} / {rec.chassis_number or '미정'})"
+
+    def write(self, vals):
+        # Store old deregistration_status before super() call
+        old_deregistration_status = {rec.id: rec.deregistration_status for rec in self}
+
+        res = super(ILoadVehicleAcquisition, self).write(vals)
+
+        for rec in self:
+            # Check if deregistration_status changed to True
+            if 'deregistration_status' in vals and vals['deregistration_status'] and not old_deregistration_status.get(rec.id):
+                if rec.order_detail_id:
+                    # Update the state of the linked order detail
+                    rec.order_detail_id.write({'state': 'customs_clearance_prep'})
+                    rec.order_detail_id.order_id.message_post(
+                        body=f"차량 매입 ({rec.name}) 말소로 인해 상세 라인 ({rec.order_detail_id.display_name}) 상태가 '통관 준비'로 변경되었습니다."
+                    )
+        return res
 
     def action_open_deregistration_wizard(self):
         if len(self) > 1:
