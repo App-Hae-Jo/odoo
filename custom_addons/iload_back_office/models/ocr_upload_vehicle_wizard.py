@@ -98,6 +98,19 @@ class IloadOcrUploadVehicleWizard(models.TransientModel):
             f'default_{key}': value # 'default_필드명': 값 형태로 컨텍스트에 추가
             for key, value in dummy_ocr_data.items()
         }
+
+        # 업로드된 문서를 acquisition_document_ids에 기본값으로 연결
+        if self.document:
+            document_default_value = (
+                0, 0, {
+                    'name': self.document_name or f'OCR 문서 ({self.document_type})',
+                    'attachment': self.document,
+                    'document_type': self.document_type,
+                    'issue_date': date.today(),
+                }
+            )
+            # One2many 필드에 기본값을 추가할 때는 리스트 형태로 전달
+            action['context']['default_acquisition_document_ids'] = [document_default_value]
         
         # 최종 액션 딕셔너리 내용을 서버 로그에 출력
         _logger.info(f"반환될 최종 액션 딕셔너리: {action}")

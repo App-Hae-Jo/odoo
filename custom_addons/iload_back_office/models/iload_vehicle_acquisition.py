@@ -1,5 +1,5 @@
 from odoo import fields, models, api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 from datetime import date
 
 class ILoadVehicleAcquisition(models.Model):
@@ -116,3 +116,22 @@ class ILoadVehicleAcquisition(models.Model):
     def _compute_display_name(self):
         for rec in self:
             rec.display_name = f"{rec.name} ({rec.car_registration_number or '미등록'} / {rec.chassis_number or '미정'})"
+
+    def action_open_deregistration_wizard(self):
+        if len(self) > 1:
+            raise UserError("말소 등록은 단일 차량에 대해서만 가능합니다.")
+
+        self.ensure_one() # 이제 단일 레코드임을 확신할 수 있으므로 안전하게 사용
+
+        if self.deregistration_status:
+            raise UserError("선택된 차량은 이미 말소 처리되었습니다.")
+
+        # 마법사 액션 반환
+        return {
+            'name': "차량 말소 등록",
+            'type': 'ir.actions.act_window',
+            'res_model': 'iload.vehicle.deregistration.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_acquisition_id': self.id, 'active_ids': self.ids},
+        }

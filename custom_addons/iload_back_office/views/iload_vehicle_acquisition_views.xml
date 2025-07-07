@@ -25,8 +25,8 @@
                                 type="action"
                                 string="OCR 문서 업로드"
                                 class="oe_highlight" display="always"/>
-                        <button name="%(iload_back_office.action_iload_vehicle_deregistration_wizard)d"
-                                type="action"
+                        <button name="action_open_deregistration_wizard"
+                                type="object"
                                 string="말소 등록"
                                 class="oe_highlight"/>
                     </header>

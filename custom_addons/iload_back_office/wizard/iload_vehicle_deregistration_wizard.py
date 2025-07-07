@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class IloadVehicleDeregistrationWizard(models.TransientModel):
     _name = 'iload.vehicle.deregistration.wizard'
@@ -15,22 +16,28 @@ class IloadVehicleDeregistrationWizard(models.TransientModel):
         """
         self.ensure_one()
         active_ids = self.env.context.get('active_ids', [])
-        acquisition_records = self.env['iload.vehicle.acquisition'].browse(active_ids)
 
-        for record in acquisition_records:
-            # 1. 매입 관련 문서에 추가 (첨부파일 포함)
-            # 'attachment=True' 필드이므로 ir.attachment는 자동 생성됩니다.
-            self.env['iload.vehicle.acquisition.document'].create({
-                'acquisition_id': record.id,
-                'attachment': self.deregistration_certificate,
-                'name': self.file_name or '말소 확인증',
-                'document_type': 'deregistration_confirmation',
-            })
+        if not active_ids or len(active_ids) > 1:
+            raise UserError("말소 등록은 단일 차량에 대해서만 가능합니다.")
 
-            # 2. 차량 매입 정보 업데이트
-            record.write({
-                'deregistration_status': True,
-                'deregistration_date': fields.Date.today(),
-            })
+        acquisition_record = self.env['iload.vehicle.acquisition'].browse(active_ids)
+
+        if acquisition_record.deregistration_status:
+            raise UserError("선택된 차량은 이미 말소 처리되었습니다.")
+
+        # 1. 매입 관련 문서에 추가 (첨부파일 포함)
+        # 'attachment=True' 필드이므로 ir.attachment는 자동 생성됩니다.
+        self.env['iload.vehicle.acquisition.document'].create({
+            'acquisition_id': acquisition_record.id,
+            'attachment': self.deregistration_certificate,
+            'name': self.file_name or '말소 확인증',
+            'document_type': 'deregistration_confirmation',
+        })
+
+        # 2. 차량 매입 정보 업데이트
+        acquisition_record.write({
+            'deregistration_status': True,
+            'deregistration_date': fields.Date.today(),
+        })
 
         return {'type': 'ir.actions.act_window_close'}

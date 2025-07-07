@@ -43,5 +43,5 @@
     'application': True,
     'auto_install': False,
     # 'license': 'LGPL-3',      # 모듈의 라이선스 (권장)
-        'web_icon': 'iload_back_office,static/src/img/iload_logo.svg', # 앱스 및 메뉴에 표시될 아이콘 경로 (선택 사항)
+    'web_icon': 'iload_back_office,static/src/img/iload_logo.svg', # 앱스 및 메뉴에 표시될 아이콘 경로 (선택 사항)
 }
