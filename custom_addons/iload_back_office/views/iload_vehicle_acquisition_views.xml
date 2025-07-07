@@ -25,6 +25,10 @@
                                 type="action"
                                 string="OCR 문서 업로드"
                                 class="oe_highlight" display="always"/>
+                        <button name="%(iload_back_office.action_iload_vehicle_deregistration_wizard)d"
+                                type="action"
+                                string="말소 등록"
+                                class="oe_highlight"/>
                     </header>
                     <field name="name"/>
                     <field name="acquisition_date"/>
@@ -38,8 +42,6 @@
                     <field name="deregistration_status"/>
                     <field name="deregistration_date"/>
                     <field name="storage_location"/>
-                    <field name="deregistration_status"/>
-                    <field name="deregistration_date" invisible="[('deregistration_status', '=', False)]"/>
                 </list>
             </field>
         </record>

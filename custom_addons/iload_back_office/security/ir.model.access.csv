@@ -5,3 +5,4 @@ access_iload_vehicle_user,iload.vehicle.user,model_iload_vehicle,base.group_user
 access_iload_vehicle_acquisition_user,iload.vehicle.acquisition.user,model_iload_vehicle_acquisition,base.group_user,1,1,1,1
 access_iload_vehicle_acquisition_document_user,iload.vehicle.acquisition.document.user,model_iload_vehicle_acquisition_document,base.group_user,1,1,1,1
 access_iload_ocr_upload_vehicle_wizard,iload.ocr.vehicle.upload.wizard.access,model_iload_ocr_upload_vehicle_wizard,base.group_user,1,1,1,1
+access_iload_vehicle_deregistration_wizard,iload.vehicle.deregistration.wizard.access,model_iload_vehicle_deregistration_wizard,base.group_user,1,1,1,1
