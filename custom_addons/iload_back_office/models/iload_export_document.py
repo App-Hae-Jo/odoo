@@ -48,6 +48,10 @@ class ILoadExportDocument(models.Model):
         ('customs_request', '통관요청서'),
         ('export_declaration', '수출신고필증'),
         ('bl', '선하증권(B/L)'),
+        ('vehicle_sales_contract', '차량판매계약서'),
+        ('packing_list', '패킹리스트'),
+        ('export_registration_cert', '수출자동차등록증'),
+        ('customs_power_of_attorney', '통관위임장'),
         ('other', '기타'),
     ], string='문서 유형', required=True, default='customs_request', help="문서의 분류입니다.")
 
