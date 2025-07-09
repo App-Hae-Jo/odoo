@@ -97,6 +97,7 @@ class ILoadOrderDetail(models.Model):
         ('customs_clearance_in_progress', '통관 진행 중'), # 통관 절차 진행 중 (면장 발급 진행 중)
         ('shipping_prep', '선적 준비'), # 선적을 위한 준비 중
         ('shipping_in_progress', '선적 진행 중'), # 실제 선적 중
+        ('shipping_fin', '선적 완료'), # 실제 선적 중
         ('delivered', '인도 완료'), # 고객에게 최종 인도 완료
         ('cancelled', '취소됨'), # 이 상세 라인(차량)만 취소된 경우
     ], string='상태', default='draft', tracking=True, help="이 주문 상세 건의 현재 진행 상태입니다.")

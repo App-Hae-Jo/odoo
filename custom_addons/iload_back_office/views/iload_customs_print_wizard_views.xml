@@ -20,51 +20,40 @@
         <template id="iload_customs_print_wizard_qweb">
             <t t-call="web.html_container">
                 <t t-call="web.external_layout">
-                    <div class="page">
-                        <style>
-                            body { font-family: Arial, sans-serif; font-size: 12px; }
-                            h2, h3 { color: #333; margin-top: 20px; margin-bottom: 10px; }
-                            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-                            table, th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-                            th { background-color: #f2f2f2; }
-                            address { white-space: pre-line; }
-                            .mt-5 { margin-top: 3rem !important; }
-                            .col-6 { width: 50%; float: left; box-sizing: border-box; padding-right: 15px; padding-left: 15px; }
-                            .row::after { content: ""; clear: both; display: table; }
-                        </style>
-                        <h2>통관 요청서</h2>
-                        <p class="mt-5"><strong>관련 주문:</strong> <span t-field="doc.order_id.name"/></p>
+                    <div class="page" style="font-family: Arial, sans-serif; font-size: 12px;">
+                        <h2 style="color: #333; margin-top: 20px; margin-bottom: 10px;">통관 요청서</h2>
+                        <p style="margin-top: 3rem !important;"><strong>관련 주문:</strong> <span t-field="doc.order_id.name"/></p>
                         <p><strong>요청일:</strong> <span t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/></p>
                         
-                        <h3 class="mt-5">차량 정보</h3>
-                        <table class="table table-sm">
-                            <tr>
-                                <td><strong>차량 모델</strong></td>
-                                <td><span t-field="doc.vehicle_id"/></td>
+                        <h3 style="color: #333; margin-top: 20px; margin-bottom: 10px;">차량 정보</h3>
+                        <table class="table table-sm" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                            <tr style="border: 1px solid #ddd; padding: 8px; text-align: left;">
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><strong>차량 모델</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><span t-field="doc.vehicle_id"/></td>
                             </tr>
-                            <tr>
-                                <td><strong>차대번호</strong></td>
-                                <td><span t-field="doc.chassis_number"/></td>
+                            <tr style="border: 1px solid #ddd; padding: 8px; text-align: left;">
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><strong>차대번호</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><span t-field="doc.chassis_number"/></td>
                             </tr>
-                            <tr>
-                                <td><strong>연식</strong></td>
-                                <td><span t-field="doc.vehicle_year"/></td>
+                            <tr style="border: 1px solid #ddd; padding: 8px; text-align: left;">
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><strong>연식</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><span t-field="doc.vehicle_year"/></td>
                             </tr>
                         </table>
 
-                        <h3 class="mt-5">수출자 / 구매자 정보</h3>
-                        <div class="row">
-                            <div class="col-6">
+                        <h3 style="color: #333; margin-top: 20px; margin-bottom: 10px;">수출자 / 구매자 정보</h3>
+                        <div class="row" style="overflow: hidden;">
+                            <div class="col-6" style="width: 50%; float: left; box-sizing: border-box; padding-right: 15px; padding-left: 15px;">
                                 <strong>수출자:</strong>
-                                <address t-field="doc.order_id.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                                <address t-field="doc.order_id.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' style="white-space: pre-line;"/>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6" style="width: 50%; float: left; box-sizing: border-box; padding-right: 15px; padding-left: 15px;">
                                 <strong>구매자:</strong>
-                                <address t-field="doc.order_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                                <address t-field="doc.order_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' style="white-space: pre-line;"/>
                             </div>
                         </div>
 
-                        <p class="mt-5">
+                        <p style="margin-top: 3rem !important;">
                             상기 차량에 대한 통관 진행을 요청합니다.
                         </p>
                     </div>

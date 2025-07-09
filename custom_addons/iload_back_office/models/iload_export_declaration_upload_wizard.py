@@ -60,11 +60,10 @@ class ILoadExportDeclarationUploadWizard(models.TransientModel):
             self.order_detail_id.write({'state': 'shipping_prep'})
 
         return {
-            'type': 'ir.actions.client',
-            'tag': 'display_notification',
-            'params': {
-                'message': '신고서가 성공적으로 업로드되었습니다.',
-                'type': 'success',
-                'sticky': False,
-            }
+            'name': '수출 관련 문서',
+            'type': 'ir.actions.act_window',
+            'res_model': 'iload.export.document',
+            'view_mode': 'tree,form,kanban',
+            'domain': [('order_detail_id', '=', self.order_detail_id.id)], # Filter to show only documents for the current order detail
+            'context': {'default_order_detail_id': self.order_detail_id.id},
         }

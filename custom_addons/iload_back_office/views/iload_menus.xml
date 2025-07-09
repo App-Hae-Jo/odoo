@@ -22,6 +22,12 @@
             action="action_iload_order_detail_customs"
             sequence="15"/>
         
+        <menuitem id="menu_iload_export_document_management"
+            name="수출문서관리"
+            parent="menu_iload_orders"
+            action="action_iload_export_document_menu"
+            sequence="16"/>
+        
         <!-- 구매파트 -->
         <menuitem id="menu_iload_vehicle_acquisition"
             name="차량 매입 관리"

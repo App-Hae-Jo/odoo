@@ -65,5 +65,17 @@
                 </kanban>
             </field>
         </record>
+
+        <record id="action_iload_export_document_menu" model="ir.actions.act_window">
+            <field name="name">수출 관련 문서</field>
+            <field name="res_model">iload.export.document</field>
+            <field name="view_mode">list,form,kanban</field>
+        </record>
+
+        <act_window id="action_iload_export_document"
+            name="수출 관련 문서"
+            res_model="iload.export.document"
+            view_mode="list,form,kanban"/>
+
     </data>
 </odoo>
