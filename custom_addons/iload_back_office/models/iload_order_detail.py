@@ -122,6 +122,13 @@ class ILoadOrderDetail(models.Model):
         help="이 주문 상세(차량)와 관련된 모든 수출 문서입니다."
     )
 
+    shipping_ids = fields.One2many(
+        'iload.shipping',
+        'order_detail_id',
+        string='선적 정보',
+        help="이 주문 상세(차량)와 관련된 선적 정보입니다."
+    )
+
     # --- SQL 제약 조건 (수정) ---
     _sql_constraints = [
         # chassis_number는 related 필드이므로, 여기서는 unique 제약 조건이 불필요하며 제거해야 합니다.
