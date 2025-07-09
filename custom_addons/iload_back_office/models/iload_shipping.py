@@ -52,3 +52,25 @@ class ILoadShipping(models.Model):
     def _compute_display_name(self):
         for rec in self:
             rec.display_name = f"{rec.name} (주문: {rec.order_detail_id.display_name or '미정'})"
+
+    def action_open_shipping_mark_wizard(self):
+        """
+        '쉬핑 마크 생성' 위자드를 엽니다.
+        선택된 레코드가 하나이고, 연결된 주문 상세의 상태가 '선적 준비' 또는 '선적 진행 중'일 때만 허용합니다.
+        """
+        self.ensure_one() # 단일 레코드만 선택되었는지 확인
+
+        if not self.order_detail_id:
+            raise UserError("관련 주문 상세 정보가 없는 선적 건은 쉬핑 마크를 생성할 수 없습니다.")
+
+        if self.order_detail_id.state not in ('shipping_prep', 'shipping_in_progress'):
+            raise UserError("쉬핑 마크는 '선적 준비' 또는 '선적 진행 중' 상태에서만 생성할 수 있습니다.")
+
+        return {
+            'name': '쉬핑 마크 생성',
+            'type': 'ir.actions.act_window',
+            'res_model': 'iload.shipping.mark.wizard', # 위자드 모델 이름
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_shipping_id': self.id, 'active_id': self.id, 'active_model': 'iload.shipping'},
+        }

@@ -22,9 +22,9 @@
             <field name="arch" type="xml">
                 <form string="선적 정보">
                     <sheet>
-                        <!-- <header>
+                        <header>
                             <button name="action_open_shipping_mark_wizard" string="쉬핑 마크 생성" type="object" class="oe_highlight"/>
-                        </header> -->
+                        </header>
                         <group>
                             <group>
                                 <field name="name"/>
