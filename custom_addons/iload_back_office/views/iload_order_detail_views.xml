@@ -1,12 +1,18 @@
 <odoo>
     <data>
-        <record id="view_iload_order_detail_tree" model="ir.ui.view">
-            <field name="name">iload.order.detail.tree</field>
+        <record id="view_iload_order_detail_list" model="ir.ui.view">
+            <field name="name">iload.order.detail.list</field>
             <field name="model">iload.order.detail</field>
             <field name="arch" type="xml">
-                <list string="주문 상세 목록" decoration-success="state == 'delivered'" decoration-muted="state == 'cancelled'">
+                <list string="주문 상세 목록" decoration-success="state == 'delivered'" decoration-muted="state == 'cancelled'" create="false">
+                    <header>
+                        <button name="action_open_export_declaration_wizard"
+                                type="object"
+                                string="신고서 업로드"
+                                class="oe_highlight"
+                        />
+                    </header>
                     <field name="order_id"/>
-                    <field name="sequence"/>
                     <field name="vehicle_id"/>
                     <field name="chassis_number"/>
                     <field name="amount" sum="Total Amount"/>
@@ -23,7 +29,8 @@
                 <form string="주문 상세">
                     <sheet>
                         <header>
-                            <field name="state" widget="statusbar" statusbar_visible="draft,vehicle_acquiring,customs_clearance_in_progress,shipping_in_progress,delivered"/>
+                            <button name="action_start_customs_clearance" string="통관 진행 하기" type="object" class="oe_highlight"/>
+                            <field name="state" widget="statusbar" statusbar_visible="draft,vehicle_acquiring,customs_clearance_prep,customs_clearance_in_progress,shipping_in_progress,delivered"/>
                         </header>
                         <group>
                             <group>
@@ -59,9 +66,60 @@
                                     </list>
                                 </field>
                             </page>
+                            <page string="수출 서류">
+                                <field name="export_document_ids"/>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <!-- Kanban View for Order Details -->
+        <record id="view_iload_order_detail_kanban" model="ir.ui.view">
+            <field name="name">iload.order.detail.kanban</field>
+            <field name="model">iload.order.detail</field>
+            <field name="arch" type="xml">
+                <kanban group_by="state" create="false">
+                    <header>
+                        <field name="state" widget="kanban_column" string="통관준비" options="{'group_by_value': 'customs_clearance_prep'}"/>
+                        <field name="state" widget="kanban_column" string="통관진행중" options="{'group_by_value': 'customs_clearance_in_progress'}"/>
+                    </header>
+                    <field name="order_id"/>
+                    <field name="vehicle_id"/>
+                    <field name="state"/>
+                    <field name="display_name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <!-- <h4 class="text-center"><field name="state"/></h4> -->
+                                    <strong><field name="display_name"/></strong>
+                                    <div>
+                                        <span>Order: <field name="order_id"/></span>
+                                    </div>
+                                    <div>
+                                        <span class="text-muted">Chassis: <field name="chassis_number"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action for Customs Preparation Menu -->
+        <record id="action_iload_order_detail_customs" model="ir.actions.act_window">
+            <field name="name">수출준비 및 관리</field>
+            <field name="res_model">iload.order.detail</field>
+            <field name="view_mode">list,kanban,form</field>
+            <field name="domain">[('state', 'in', ['customs_clearance_prep', 'customs_clearance_in_progress'])]</field>
+            <field name="context">{'search_default_group_by_state': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    통관 준비 중인 차량이 없습니다.
+                </p>
             </field>
         </record>
     </data>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_iload_export_document_list" model="ir.ui.view">
+            <field name="name">iload.export.document.list</field>
+            <field name="model">iload.export.document</field>
+            <field name="arch" type="xml">
+                <list string="수출 관련 문서">
+                    <field name="name"/>
+                    <field name="order_detail_id"/>
+                    <field name="document_type"/>
+                    <field name="issue_date"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_iload_export_document_form" model="ir.ui.view">
+            <field name="name">iload.export.document.form</field>
+            <field name="model">iload.export.document</field>
+            <field name="arch" type="xml">
+                <form string="수출 관련 문서">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="order_detail_id"/>
+                            <field name="document_type"/>
+                            <field name="issue_date"/>
+                            <field name="description"/>
+                        </group>
+                        <group string="첨부파일">
+                            <field name="attachment" widget="binary" filename="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Kanban View -->
+        <record id="view_iload_export_document_kanban" model="ir.ui.view">
+            <field name="name">iload.export.document.kanban</field>
+            <field name="model">iload.export.document</field>
+            <field name="arch" type="xml">
+                <kanban group_by="document_type">
+                    <field name="name"/>
+                    <field name="order_detail_id"/>
+                    <field name="issue_date"/>
+                    <field name="document_type"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong><field name="name"/></strong>
+                                    <div>
+                                        <span>주문 상세: <field name="order_detail_id"/></span>
+                                    </div>
+                                    <div>
+                                        <span class="text-muted">발행일: <field name="issue_date"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -15,6 +15,12 @@
             name="주문 내역"
             parent="menu_iload_orders"
             action="action_iload_order_view"  sequence="10"/>
+
+        <menuitem id="menu_iload_customs_management"
+            name="수출준비 및 관리"
+            parent="menu_iload_orders"
+            action="action_iload_order_detail_customs"
+            sequence="15"/>
         
         <!-- 구매파트 -->
         <menuitem id="menu_iload_vehicle_acquisition"

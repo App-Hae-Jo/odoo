@@ -113,6 +113,14 @@ class ILoadOrderDetail(models.Model):
         readonly=True # 이 필드는 직접 추가하는 것이 아니라 관련 문서가 자동으로 여기에 표시됩니다.
     )
 
+    # 이 주문 상세와 관련된 수출 문서들
+    export_document_ids = fields.One2many(
+        'iload.export.document',
+        'order_detail_id',
+        string='수출 관련 문서',
+        help="이 주문 상세(차량)와 관련된 모든 수출 문서입니다."
+    )
+
     # --- SQL 제약 조건 (수정) ---
     _sql_constraints = [
         # chassis_number는 related 필드이므로, 여기서는 unique 제약 조건이 불필요하며 제거해야 합니다.
@@ -237,14 +245,22 @@ class ILoadOrderDetail(models.Model):
         else:
             raise ValidationError("현재 상태에서는 '통관 준비'로 변경할 수 없습니다.")
 
-    def action_start_customs_clearance_in_progress(self):
-        """상태를 '통관 진행 중'으로 변경합니다."""
+    def action_start_customs_clearance(self):
+        """상태를 '통관 진행 중'으로 변경하고 통관 요청서 인쇄 위자드를 엽니다."""
         self.ensure_one()
         if self.state == 'customs_clearance_prep':
             self.write({'state': 'customs_clearance_in_progress'})
             self.order_id.message_post(body=f"상세 라인 ({self.display_name}) 상태가 '통관 진행 중'으로 변경되었습니다.")
+            return {
+                'name': '통관 요청서 인쇄',
+                'type': 'ir.actions.act_window',
+                'res_model': 'iload.customs.print.wizard',
+                'view_mode': 'form',
+                'target': 'new',
+                'context': {'default_order_detail_id': self.id},
+            }
         else:
-            raise ValidationError("현재 상태에서는 '통관 진행 중'으로 변경할 수 없습니다.")
+            raise ValidationError("현재 상태에서는 '통관 진행'으로 변경할 수 없습니다.")
 
     def action_start_shipping_prep(self):
         """상태를 '선적 준비'로 변경합니다."""
@@ -281,3 +297,22 @@ class ILoadOrderDetail(models.Model):
             self.order_id.message_post(body=f"상세 라인 ({self.display_name})이 취소되었습니다.", message_type='comment', subtype_xmlid='mail.mt_note')
         else:
             raise ValidationError("이미 완료되거나 취소된 주문 상세는 취소할 수 없습니다.")
+
+    def action_open_export_declaration_wizard(self):
+        """
+        '신고서 업로드' 위자드를 엽니다.
+        선택된 레코드가 하나이고, 상태가 '통관 진행 중'일 때만 허용합니다.
+        """
+        self.ensure_one() # 단일 레코드만 선택되었는지 확인
+
+        if self.state != 'customs_clearance_in_progress':
+            raise ValidationError("신고서 업로드는 '통관 진행 중' 상태에서만 가능합니다.")
+
+        return {
+            'name': '신고서 업로드',
+            'type': 'ir.actions.act_window',
+            'res_model': 'iload.export.declaration.upload.wizard', # 위자드 모델 이름
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_order_detail_id': self.id},
+        }

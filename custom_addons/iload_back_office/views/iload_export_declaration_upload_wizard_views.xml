@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_iload_export_declaration_upload_wizard_form" model="ir.ui.view">
+            <field name="name">iload.export.declaration.upload.wizard.form</field>
+            <field name="model">iload.export.declaration.upload.wizard</field>
+            <field name="arch" type="xml">
+                <form string="신고서 업로드">
+                    <sheet>
+                        <group>
+                            <field name="order_detail_id" invisible="1"/>
+                            <field name="document_name"/>
+                            <field name="attachment" filename="document_name"/>
+                            <field name="issue_date"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="업로드" name="upload_declaration" type="object" class="oe_highlight"/>
+                        <button string="취소" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_iload_export_declaration_upload_wizard" model="ir.actions.act_window">
+            <field name="name">신고서 업로드</field>
+            <field name="res_model">iload.export.declaration.upload.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

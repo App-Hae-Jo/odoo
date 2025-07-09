@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="iload_customs_print_wizard_form_view" model="ir.ui.view">
+            <field name="name">iload.customs.print.wizard.form</field>
+            <field name="model">iload.customs.print.wizard</field>
+            <field name="arch" type="xml">
+                <form string="통관 요청서 인쇄">
+                    <field name="order_detail_id" invisible="1"/>
+                    <field name="report_content" widget="html" nolabel="1"/>
+                    <footer>
+                        <button string="저장" name="print_report" type="object" class="btn-primary"/>
+                        <button string="닫기" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- QWeb Template for the content to be printed -->
+        <template id="iload_customs_print_wizard_qweb">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <style>
+                            body { font-family: Arial, sans-serif; font-size: 12px; }
+                            h2, h3 { color: #333; margin-top: 20px; margin-bottom: 10px; }
+                            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+                            table, th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                            th { background-color: #f2f2f2; }
+                            address { white-space: pre-line; }
+                            .mt-5 { margin-top: 3rem !important; }
+                            .col-6 { width: 50%; float: left; box-sizing: border-box; padding-right: 15px; padding-left: 15px; }
+                            .row::after { content: ""; clear: both; display: table; }
+                        </style>
+                        <h2>통관 요청서</h2>
+                        <p class="mt-5"><strong>관련 주문:</strong> <span t-field="doc.order_id.name"/></p>
+                        <p><strong>요청일:</strong> <span t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/></p>
+                        
+                        <h3 class="mt-5">차량 정보</h3>
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>차량 모델</strong></td>
+                                <td><span t-field="doc.vehicle_id"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>차대번호</strong></td>
+                                <td><span t-field="doc.chassis_number"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>연식</strong></td>
+                                <td><span t-field="doc.vehicle_year"/></td>
+                            </tr>
+                        </table>
+
+                        <h3 class="mt-5">수출자 / 구매자 정보</h3>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>수출자:</strong>
+                                <address t-field="doc.order_id.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            </div>
+                            <div class="col-6">
+                                <strong>구매자:</strong>
+                                <address t-field="doc.order_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            </div>
+                        </div>
+
+                        <p class="mt-5">
+                            상기 차량에 대한 통관 진행을 요청합니다.
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </template>
+        
+
+        <!-- Window Action to open the wizard -->
+        <act_window id="action_iload_customs_print_wizard"
+            name="통관 요청서 인쇄"
+            res_model="iload.customs.print.wizard"
+            view_mode="form"
+            target="new"/>
+
+    </data>
+</odoo>

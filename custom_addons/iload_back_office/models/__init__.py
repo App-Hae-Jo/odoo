@@ -4,4 +4,7 @@ from . import res_partner
 from . import iload_vehicle
 from . import iload_vehicle_acquisition
 from . import iload_vehicle_acquisition_document
+from . import iload_export_document
+from . import iload_customs_print_wizard
+from . import iload_export_declaration_upload_wizard
 from . import ocr_upload_vehicle_wizard

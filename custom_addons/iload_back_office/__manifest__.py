@@ -20,6 +20,9 @@
         # 'security/iload_security.xml', # 특정 그룹별 권한이 필요할 경우 만듭니다. 현재는 ir.model.access.csv로 충분
         'security/ir.model.access.csv',
 
+        # 리포트
+        'report/iload_customs_request_report.xml',
+
         # 시퀀스 (주문 및 매입 번호 자동 생성을 위해)
         'data/iload_sequence.xml',  
         # ocr 관련 wizard가 먼저되야되나 ?         
@@ -29,9 +32,11 @@
         'views/res_partner_views.xml', # 파트너 모델 확장 뷰
         'views/iload_vehicle_views.xml', # 차량 모델 마스터 뷰
         'views/iload_order_views.xml',       # 운송 주문 뷰
+        'views/iload_export_declaration_upload_wizard_views.xml',
         'views/iload_order_detail_views.xml', # 운송 주문 상세 뷰
         'views/iload_vehicle_acquisition_views.xml', # 차량 매입 뷰
         'views/iload_vehicle_acquisition_document_views.xml',
+        'views/iload_export_document_views.xml',
 
         # 메뉴 아이템 (모든 뷰 로드 후 메뉴 연결)
         'views/iload_menus.xml',             

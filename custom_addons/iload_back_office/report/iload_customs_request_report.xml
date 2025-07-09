@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_customs_request" model="ir.actions.report">
+        <field name="name">통관 요청서</field>
+        <field name="model">iload.order.detail</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">iload_back_office.report_customs_request_template</field>
+        <field name="report_file">iload_back_office.report_customs_request_template</field>
+        <field name="print_report_name">'통관요청서 - %s' % (object.vehicle_id.name or '')</field>
+        <field name="binding_model_id" eval="False"/>
+    </record>
+
+    <template id="report_customs_request_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>통관 요청서</h2>
+                        <p class="mt-5"><strong>관련 주문:</strong> <span t-field="doc.order_id.name"/></p>
+                        <p><strong>요청일:</strong> <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/></p>
+                        
+                        <h3 class="mt-5">차량 정보</h3>
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>차량 모델</strong></td>
+                                <td><span t-field="doc.vehicle_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>차대번호</strong></td>
+                                <td><span t-field="doc.chassis_number"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>연식</strong></td>
+                                <td><span t-field="doc.vehicle_year"/></td>
+                            </tr>
+                        </table>
+
+                        <h3 class="mt-5">수출자 / 구매자 정보</h3>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>수출자:</strong>
+                                <address t-field="doc.order_id.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            </div>
+                            <div class="col-6">
+                                <strong>구매자:</strong>
+                                <address t-field="doc.order_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            </div>
+                        </div>
+
+                        <p class="mt-5">
+                            상기 차량에 대한 통관 진행을 요청합니다.
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
