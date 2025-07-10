@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- All Views (ir.ui.view) should be defined first -->
+
+        <!-- Graph and Pie Chart Views -->
+        <record id="view_iload_order_graph_monthly" model="ir.ui.view">
+            <field name="name">iload.order.graph.monthly</field>
+            <field name="model">iload.order</field>
+            <field name="arch" type="xml">
+                <graph string="월별 주문 실적">
+                    <field name="order_date" interval="month" type="col"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_iload_order_pie_status" model="ir.ui.view">
+            <field name="name">iload.order.pie.status</field>
+            <field name="model">iload.order</field>
+            <field name="arch" type="xml">
+                <graph string="주문 상태 현황" type="pie">
+                    <field name="state" type="row"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_iload_vehicle_pie" model="ir.ui.view">
+            <field name="name">iload.vehicle.pie</field>
+            <field name="model">iload.vehicle</field>
+            <field name="arch" type="xml">
+                <graph string="차량 유형 현황" type="pie">
+                    <field name="vehicle_type"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_iload_export_document_pie" model="ir.ui.view">
+            <field name="name">iload.export.document.pie</field>
+            <field name="model">iload.export.document</field>
+            <field name="arch" type="xml">
+                <graph string="수출 문서 종류 현황" type="pie">
+                    <field name="document_type"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- All Actions (ir.actions.act_window) should be defined after views they reference -->
+
+        <record id="action_iload_order_monthly" model="ir.actions.act_window">
+            <field name="name">월별 주문 실적</field>
+            <field name="res_model">iload.order</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_iload_order_graph_monthly"/>
+        </record>
+
+        <record id="action_iload_export_document_type" model="ir.actions.act_window">
+            <field name="name">수출 문서 종류</field>
+            <field name="res_model">iload.export.document</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_iload_export_document_pie"/>
+        </record>
+
+        <!-- Dashboard Form View (references actions, so it comes after actions) -->
+        <record id="iload_dashboard_form" model="ir.ui.view">
+            <field name="name">iload.dashboard.form</field>
+            <field name="model">board.board</field>
+            <field name="arch" type="xml">
+                <form string="iLoad Dashboard">
+                    <board style="1-1">
+                        <column>
+                            <action name="%(iload.action_iload_order_monthly)d" string="월별 주문 실적"/>
+                            <action name="%(iload.action_iload_vehicle_view)d" string="차량 유형 현황" view_mode="graph"/>
+                        </column>
+                        <column>
+                            <action name="%(iload.action_iload_order_view)d" string="주문 상태 현황" view_mode="graph"/>
+                            <action name="%(iload.action_iload_export_document_type)d" string="수출 문서 종류 현황"/>
+                        </column>
+                    </board>
+                </form>
+            </field>
+        </record>
+
+        <!-- Dashboard Action (references dashboard form view) -->
+        <record id="action_iload_dashboard" model="ir.actions.act_window">
+            <field name="name">iLoad Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="view_id" ref="iload_dashboard_form"/>
+        </record>
+
+        <!-- Menu Item (references dashboard action) -->
+        <menuitem
+            id="menu_iload_dashboard"
+            name="Dashboard"
+            parent="menu_iload_root"
+            action="action_iload_dashboard"
+            sequence="1"/>
+    </data>
+</odoo>

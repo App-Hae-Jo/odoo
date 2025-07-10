@@ -35,5 +35,11 @@
                 </form>
             </field>
         </record>
+
+        <record id="action_iload_vehicle_view" model="ir.actions.act_window">
+            <field name="name">차량 마스터</field>
+            <field name="res_model">iload.vehicle</field>
+            <field name="view_mode">tree,form</field>
+        </record>
     </data>
 </odoo>
