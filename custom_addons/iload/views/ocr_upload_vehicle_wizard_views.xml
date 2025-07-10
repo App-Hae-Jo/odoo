@@ -25,7 +25,7 @@
             <field name="name">구매 문서 OCR</field>
             <field name="res_model">iload.ocr.upload.vehicle.wizard</field>
             <field name="view_mode">form</field>
-            <field name="target">new</field> <field name="view_id" ref="iload_back_office.view_iload_ocr_upload_vehicle_wizard_form"/>
+            <field name="target">new</field> <field name="view_id" ref="iload.view_iload_ocr_upload_vehicle_wizard_form"/>
         </record>
     </data>
 </odoo>

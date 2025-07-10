@@ -31,7 +31,7 @@ class ILoadCustomsPrintWizard(models.TransientModel):
             if rec.order_detail_id:
                 # Render the QWeb template using the order_detail_id as 'doc'
                 rec.report_content = self.env['ir.ui.view']._render_template(
-                    'iload_back_office.iload_customs_print_wizard_qweb',
+                    'iload.iload_customs_print_wizard_qweb',
                     {
                         'doc': rec.order_detail_id,
                         'datetime': datetime,

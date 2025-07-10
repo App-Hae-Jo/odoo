@@ -1,4 +1,4 @@
-# custom_addons/iload_back_office/models/ocr_upload_wizard.py
+# custom_addons/iload/models/ocr_upload_wizard.py
 
 from odoo import models, fields, api, _ # _ (번역), api (데코레이터) 등 필수 모듈 임포트
 import base64 # 바이너리 데이터 인코딩/디코딩용
@@ -74,7 +74,7 @@ class IloadOcrUploadVehicleWizard(models.TransientModel):
 
         # --- 3. 매입 등록 폼 액션 생성 및 반환 ---
         # 1. 액션 레코드셋의 데이터를 딕셔너리로 가져옵니다.
-        action = self.env.ref('iload_back_office.action_iload_vehicle_acquisition_view').read()[0] 
+        action = self.env.ref('iload.action_iload_vehicle_acquisition_view').read()[0] 
         
         # 2. 액션 딕셔너리에 필요한 값들을 먼저 명시적으로 업데이트합니다.
         #    이렇게 하면 context 병합 전에 올바른 view_mode와 views가 설정됩니다.
@@ -85,7 +85,7 @@ class IloadOcrUploadVehicleWizard(models.TransientModel):
             'target': 'current',                        # 현재 창에서 열기 (팝업 아님)
             'res_id': False,                            # 특정 기존 레코드가 아닌, 새 레코드를 생성할 것임을 명시
             # Odoo에게 'view_iload_vehicle_acquisition_form' 뷰를 'form' 타입으로 열라고 지시
-            'views': [(self.env.ref('iload_back_office.view_iload_vehicle_acquisition_form').id, 'form')],
+            'views': [(self.env.ref('iload.view_iload_vehicle_acquisition_form').id, 'form')],
             'display_name': _('새 차량 매입 (OCR)'), # Odoo UI 상단에 표시될 제목 (Odoo 15+ 적용)
         })
 

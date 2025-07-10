@@ -46,7 +46,7 @@ class ILoadShippingMarkWizard(models.TransientModel):
 
     def print_shipping_mark(self):
         self.ensure_one()
-        template_id = 'iload_back_office.iload_shipping_mark_template_a' if self.template_type == 'template_a' else 'iload_back_office.iload_shipping_mark_template_b'
+        template_id = 'iload.iload_shipping_mark_template_a' if self.template_type == 'template_a' else 'iload.iload_shipping_mark_template_b'
 
         report_content = self.env['ir.ui.view']._render_template(
             template_id,

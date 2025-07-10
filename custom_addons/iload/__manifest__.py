@@ -1,4 +1,4 @@
-# custom_addons/iload_back_office/__manifest__.py
+# custom_addons/iload/__manifest__.py
 
 {
     'name': '아이로드',
@@ -46,7 +46,7 @@
         'views/iload_menus.xml',             
     ],
     'assets': {
-        'web.assets_backend': ['iload/static/src/css/iload_back_office.css',],
+        'web.assets_backend': ['iload/static/src/css/iload.css',],
     },
     'installable': True,
     'application': True,

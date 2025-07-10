@@ -1,9 +1,9 @@
 <odoo>
     <data>
         <menuitem id="menu_iload_root"
-            name="Iload Backoffice"
+            name="Iload"
             sequence="10"
-            web_icon="iload_back_office,static/description/icon.png"/>
+            web_icon="iload,static/description/icon.png"/>
 
         <!-- 주문파트 -->
         <menuitem id="menu_iload_orders"
@@ -43,7 +43,7 @@
         <menuitem
             id="menu_iload_vehicle_acquisition_document"
             name="매입 관련 문서"
-            parent="iload_back_office.menu_iload_vehicle_acquisition"
+            parent="iload.menu_iload_vehicle_acquisition"
             action="action_iload_vehicle_acquisition_document_view"
             sequence="20"/>
 

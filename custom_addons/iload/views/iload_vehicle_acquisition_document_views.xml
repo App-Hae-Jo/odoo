@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="o_kanban_image o_kanban_logo_container">
-                                    <img src="/iload_back_office/static/src/img/iload_logo.svg" alt="Document" class="o_image_64_contain"/>
+                                    <img src="/iload/static/src/img/iload_logo.svg" alt="Document" class="o_image_64_contain"/>
                                 </div>
                                 <div class="oe_kanban_details">
                                     <div class="float-end">
