@@ -25,11 +25,11 @@ class ILoadVehicleAcquisition(models.Model):
     )
     
     # 매입처 정보 (res.partner 사용하지 않음)
-    acquisition_from_type = fields.Selection([
-        ('corporate', '법인'),
-        ('sole_proprietor', '개인사업자'),
-        ('individual', '개인'),
-    ], string='매입처 유형', required=True, default='corporate', help="차량을 매입한 주체의 유형입니다.")
+    acquisition_from_type = fields.Char(
+        string='매입처 유형', 
+        required=True, 
+        default='corporate', 
+        help="차량을 매입한 주체의 유형입니다.")
 
     # 판매처 정보 (직접 입력 필드)
     seller_name = fields.Char(
@@ -146,14 +146,11 @@ class ILoadVehicleAcquisition(models.Model):
         string='매입 관련 문서',
         help="이 차량 매입 건과 관련된 모든 문서들입니다."
     )
-    fuel_type = fields.Selection([
-        ('G', '가솔린'),
-        ('D', '디젤'),
-        ('LPG', 'LPG'),
-        ('EV', '전기'),
-        ('HY', '하이브리드'),
-        ('ETC', '기타'),
-    ], string='연료 구분', default='ETC', required=True, help="이 차량의 연료 유형입니다.")
+    fuel_type = fields.Char(
+        string='연료 구분', 
+        default='ETC', 
+        equired=True, 
+        help="이 차량의 연료 유형입니다.")
 
     no_order_detail_message = fields.Char(
         string="주문 상세 정보 없음",

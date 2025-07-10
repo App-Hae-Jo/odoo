@@ -201,7 +201,6 @@ class VLMProcessor:
         try:
             # 이미지를 base64로 인코딩
             base64_image = base64.b64encode(image_data).decode('utf-8')
-            logging.info(type(base64_image))
             # 한국어 문서 처리 최적화 프롬프트
             # JSON 스키마를 명확히 제시하여 모델이 일관된 형식으로 응답하도록 유도
             prompt = """
@@ -211,32 +210,39 @@ class VLMProcessor:
             ❗ 반드시 주의사항:
             - 예시 값을 생성하지 마세요. **문서 내 실제 값**만 추출하십시오.
             - 값이 없는 항목도 키는 유지하고, 해당 값은 `null` 또는 `""`로 표기하십시오.
+            - **날짜 필드 (acquisition_date, deregistration_date)는 반드시 'YYYY-MM-DD' 형식으로 추출해주세요.**
             - 필드를 생략하지 말고 아래 스키마에 나온 순서와 키 이름을 **정확히 지켜주세요.**
             - 전체 필드에 대한 신뢰도(confidence)는 0.0 ~ 1.0 사이로 추정해주세요.
-
+            - 숫자가 있는 값은 단위를 추가하지 마십시오.(원, km 등) db 입력을 위해 float 으로 유지해주세요.
+            - 숫자가 있는 값은 쉼표를 추가하지 마십시오. db 입력을 위해 쉼표 없이 숫자만 유지해주세요.
+            - 소유자 명칭을 확인하여 seller_contact_person 을 확인하시고 개인사업자와, 법인사업자, 개인이 주체가 되는지 확인이필요합니다
+            - 소유자 명칭을 확인하여서 주체가 회사이름 이라면 법인, 개인 중 사업자라면 개인, 개인이라면 개인으로 처리하여 주체를 나누어주세요.
             추출할 필드 목록은 다음과 같습니다 (key명은 영문 그대로 사용):
+            - "차대번호는 정확히 17자리의 영문 대문자와 숫자 조합입니다. 전화번호처럼 보일 수 있지만, 절대 연락처로 인식하지 마세요. 공백이나 하이픈 없이 연결된 코드이며, 'I', 'O', 'Q'는 포함되지 않습니다."
+            - 주행거리는 자동차가 지금까지 달린 누적 거리로 일반적으로 단위는 'km'이며, 보통 수천에서 수십만 사이의 값으로 나타나며 'mm'와 같은 차량 제원 단위와 혼동하지 말고, 자동차 등록증의 검사 유효기간 근처에 위치합니다. 해당 위치에 없다면 기입하지 말아주세요.
+            - 차량 무게(kg), 너비(mm), 배기량(cc)는 자동차의 제원(사양) 정보로, 각각 1000~3500kg, 1500~2200mm, 1000~5000cc 범위이며 주행거리나 연락처 등과 절대 혼동하지 마세요.
 
             ```json
             {
             "name": "",
-            "acquisition_date": "",
-            "acquisition_from_type": "",
-            "seller_name": "",
+            "acquisition_date": "", <-- 여기에 'YYYY-MM-DD' 형식을 설명합니다.
+            "acquisition_from_type": "", <- 여기에 주체를 확인하여 ('corporate', 'sole_proprietor', 'individual') 중에 선택해서 넣어주세요
+            "seller_name": "", <- 여기에 소유자 명칭을 설명합니다.
             "seller_registration_no": "",
             "seller_address": "",
             "seller_contact_person": "",
             "seller_phone": "",
             "car_registration_number": "",
-            "chassis_number": "",
-            "english_vehicle_name": "",
-            "mileage": "",
-            "vehicle_weight": "",
-            "engine_displacement": "",
-            "acquisition_amount": "",
+            "chassis_number": "", <- 여기에 차대 번호를 설명합니다
+            "english_vehicle_name": "", 
+            "mileage": "", <- 여기에 주행 거리를 설명합니다
+            "vehicle_weight": "", <- 여기에 차량 무게를 설명합니다.
+            "engine_displacement": "", <- 여기에 배기량을 설명합니다. 
+            "acquisition_amount": "", <-- 여기에 ','가 있다면 ,만 제거해서 숫자값만 넣어주세요
             "acquisition_currency_id": "",
             "storage_location": "",
             "deregistration_status": "",
-            "deregistration_date": "",
+            "deregistration_date": "", <-- 여기에 'YYYY-MM-DD' 형식을 설명합니다.
             "fuel_type": ""
             }
             """
@@ -369,7 +375,6 @@ JSON 응답 형식:
                 else:
                     json_str = response_text.strip() # 코드 블록 없으면 전체 텍스트 시도
             else:
-                # JSON 블록 찾기 (일반적인 { ... } 패턴)
                 start_idx = response_text.find('{')
                 end_idx = response_text.rfind('}') + 1
                 
