@@ -4,3 +4,15 @@ fitz
 Pillow
 paddleocr
 anthropic
+babel
+pytz
+urllib3
+werkzeug
+passlib
+Pillow
+reportlab
+lxml
+pypdf
+polib
+psycopg2
+decorator

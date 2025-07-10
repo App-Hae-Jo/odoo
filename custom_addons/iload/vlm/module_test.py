@@ -3,8 +3,8 @@ import platform
 import os
 import time
 
-from ..ocr.ocr_factory import VLMProcessor
-from ..ocr.convert_image import convert_pdf_to_image
+from .ocr_factory import VLMProcessor
+from .convert_image import convert_pdf_to_image
 
 
 def main():
