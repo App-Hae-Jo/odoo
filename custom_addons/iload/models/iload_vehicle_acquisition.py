@@ -73,11 +73,10 @@ class ILoadVehicleAcquisition(models.Model):
         required=True,
         help="차량을 매입한 금액입니다."
     )
-    acquisition_currency_id = fields.Many2one(
+    acquisition_currency_id = fields.Char(
         'res.currency',
         string='매입 통화',
-        required=True,
-        default=lambda self: self.env.company.currency_id.id,
+        default='KR',
         help="매입액에 사용된 통화입니다."
     )
 
