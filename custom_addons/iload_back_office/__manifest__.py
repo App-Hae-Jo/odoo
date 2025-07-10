@@ -38,6 +38,9 @@
         'views/iload_vehicle_acquisition_document_views.xml',
         'views/iload_export_document_views.xml',
         'views/iload_customs_print_wizard_views.xml',
+        'views/iload_shipping_mark_templates.xml',
+        'views/iload_shipping_views.xml',
+        'views/iload_shipping_document_views.xml',
 
         # 메뉴 아이템 (모든 뷰 로드 후 메뉴 연결)
         'views/iload_menus.xml',             

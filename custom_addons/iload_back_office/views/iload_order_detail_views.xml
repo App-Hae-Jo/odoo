@@ -30,7 +30,7 @@
                     <sheet>
                         <header>
                             <button name="action_start_customs_clearance" string="통관 진행 하기" type="object" class="oe_highlight"/>
-                            <field name="state" widget="statusbar" statusbar_visible="draft,vehicle_acquiring,customs_clearance_prep,customs_clearance_in_progress,shipping_in_progress,delivered"/>
+                            <field name="state" widget="statusbar" statusbar_visible="draft,vehicle_acquiring,customs_clearance_prep,customs_clearance_in_progress,shipping_prep,shipping_in_progress,shipping_fin,delivered"/>
                         </header>
                         <group>
                             <group>

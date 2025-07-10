@@ -46,5 +46,23 @@
             parent="iload_back_office.menu_iload_vehicle_acquisition"
             action="action_iload_vehicle_acquisition_document_view"
             sequence="20"/>
+
+        <!-- 선적파트 -->
+        <menuitem id="menu_iload_shipping_root"
+            name="선적 관리"
+            parent="menu_iload_root"
+            sequence="12"/>
+
+        <menuitem id="menu_iload_shipping_list"
+            name="선적 현황"
+            parent="menu_iload_shipping_root"
+            action="action_iload_shipping_menu"
+            sequence="10"/>
+
+        <menuitem id="menu_iload_shipping_document_list"
+            name="선적 문서"
+            parent="menu_iload_shipping_root"
+            action="action_iload_shipping_document_menu"
+            sequence="20"/>
     </data>
 </odoo>
