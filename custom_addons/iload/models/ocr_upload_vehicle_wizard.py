@@ -6,7 +6,7 @@ import logging # 로그 출력용
 from datetime import date # 오늘 날짜를 가져오기 위해 import
 from odoo.exceptions import UserError # 디버깅을 위해 UserError import (선택 사항)
 from odoo.tools.safe_eval import safe_eval # <--- 이 부분이 핵심 수정입니다! safe_eval 함수를 직접 임포트
-from ..vlm.ocr_factory import VLMProcfessor
+from ..vlm.ocr_factory import VLMProcessor
 from ..vlm.convert_image import convert_pdf_to_image
 
 _logger = logging.getLogger(__name__) # 로그를 위한 로거 생성

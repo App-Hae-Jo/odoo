@@ -45,6 +45,8 @@ source venv/bin/activate
 pip install -U pip setuptools wheel
 pip install -r requirements.txt
 
+pip install --upgrade --force-reinstall PyMuPDF
+
 ./odoo-bin -c odoo.conf --dev=all
 
 ```
