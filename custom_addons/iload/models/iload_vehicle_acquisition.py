@@ -69,14 +69,12 @@ class ILoadVehicleAcquisition(models.Model):
     # 재무 정보
     acquisition_amount = fields.Monetary(
         string='매입액',
-        currency_field='acquisition_currency_id',
         required=True,
         help="차량을 매입한 금액입니다."
     )
     acquisition_currency_id = fields.Char(
-        'res.currency',
         string='매입 통화',
-        default='KR',
+        default='KRW',
         help="매입액에 사용된 통화입니다."
     )
 
