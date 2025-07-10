@@ -69,7 +69,7 @@
                     <board style="1-1">
                         <column>
                             <action name="%(iload.action_iload_order_monthly)d" string="월별 주문 실적"/>
-                            <action name="%(iload.action_iload_vehicle_view)d" string="차량 유형 현황" view_mode="graph"/>
+                            <action name="%(iload.iload_vehicle_action)d" string="차량 유형 현황" view_mode="graph"/>
                         </column>
                         <column>
                             <action name="%(iload.action_iload_order_view)d" string="주문 상태 현황" view_mode="graph"/>

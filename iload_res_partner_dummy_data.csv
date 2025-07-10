@@ -1,0 +1,21 @@
+id,name,is_company,email,phone,street,city,zip,country_id/code,is_iload_customer,iload_customer_code,customs_clearance_no,currency_id/name,destination_country_id/code
+partner_iload_1,류고김,True,jusanghyeon@yunhong.com,011-442-2170,전라남도 수원시 장안구 가락77로 413 (정순최마을),충주시,93688,JP,False,,,JPY,CN
+partner_iload_2,이정김,True,seohyeonju@jusighoesa.com,054-910-4029,부산광역시 성동구 백제고분0길 564 (영환박읍),원주시,18032,DE,False,,,JPY,DE
+partner_iload_3,주식회사 강이박,True,hyeonju87@yu.kr,062-450-8333,경상남도 영동군 양재천61길 158,용인시 수지구,24475,KR,True,CUST64913,040504-2589719,USD,FR
+partner_iload_4,유한회사 김장고,True,minji00@yuhanhoesa.com,070-3079-6473,부산광역시 동구 삼성3거리 876,동해시,46956,JP,True,CUST43689,970904-1721058,EUR,DE
+partner_iload_5,손최,True,seongmin42@gimhangang.kr,062-345-8758,인천광역시 금천구 선릉로 333 (준서황한마을),태안군,10802,KR,False,,,KRW,FR
+partner_iload_6,이허,True,hyeonjun27@angim.com,055-390-0291,경기도 시흥시 양재천로 311,부천시 소사구,83826,FR,False,,,KRW,CN
+partner_iload_7,박최,True,gwagjiu@coegim.com,018-965-0019,강원도 청주시 흥덕구 서초중앙가 923,안산시 상록구,28765,FR,False,,,USD,KR
+partner_iload_8,권이,True,gimminseo@ju.com,044-489-6176,인천광역시 서초구 선릉778로 796-31,청주시 흥덕구,35321,FR,True,CUST28010,140820-1156259,USD,DE
+partner_iload_9,김이,True,jiweon40@gimgim.com,031-982-8003,전라남도 남양주시 오금1길 567-60 (은영안리),과천시,48089,CN,False,,,USD,KR
+partner_iload_10,이윤이,True,iujin@yu.kr,054-374-1982,울산광역시 강서구 강남대거리 752 (상철차리),영동군,81624,CN,False,,,JPY,DE
+partner_iload_11,김송,True,rgim@gimi.com,070-3659-7503,부산광역시 구로구 강남대7거리 553 (채원김마을),정선군,54424,US,True,CUST47183,680025-2091753,EUR,US
+partner_iload_12,(주) 성권김,True,minjihyeon@jusighoesa.net,062-239-1445,세종특별자치시 성북구 잠실가 678-36 (유진김마을),화성시,21352,KR,False,,,USD,US
+partner_iload_13,주식회사 김,True,eunseo79@yu.org,031-200-5235,충청남도 동두천시 학동88로 713,하남시,15823,KR,False,,,KRW,CN
+partner_iload_14,주식회사 김서김,True,anjeonghun@jusighoesa.net,033-100-6497,울산광역시 남구 학동길 449-12 (민서남임리),오산시,59914,KR,False,,,JPY,DE
+partner_iload_15,유한회사 김김박,True,gangminsu@minijang.net,061-196-6266,충청남도 논산시 테헤란25길 395-47 (현우김읍),안산시,51843,JP,True,CUST37954,220718-2589300,USD,US
+partner_iload_16,유한회사 김배김,True,gi@baegomin.kr,064-788-4958,전라남도 서산시 학동거리 372,서천군,79992,DE,True,CUST60626,960202-1415020,JPY,US
+partner_iload_17,(유) 박,True,ti@gimgweon.com,064-764-0240,대전광역시 광진구 반포대193가 지하533 (정자박읍),당진시,43981,JP,True,CUST38885,680323-1019479,USD,CN
+partner_iload_18,유한회사 이,True,oheo@mungimgim.com,064-708-3230,서울특별시 종로구 언주길 851 (정숙김이읍),안산시 상록구,49068,FR,False,,,EUR,JP
+partner_iload_19,(유) 안,True,ygim@yu.kr,052-808-5641,세종특별자치시 용산구 도산대777길 343 (정희주마을),용인시 처인구,76624,JP,False,,,USD,US
+partner_iload_20,이강김,True,eomyeongsun@gimhan.net,064-775-5743,부산광역시 금천구 도산대길 786-81,수원시 영통구,73025,US,False,,,EUR,CN
