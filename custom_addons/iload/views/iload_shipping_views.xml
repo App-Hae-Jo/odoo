@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View for iload.shipping -->
+        <record id="view_iload_shipping_list" model="ir.ui.view">
+            <field name="name">iload.shipping.list</field>
+            <field name="model">iload.shipping</field>
+            <field name="arch" type="xml">
+                <list string="선적 목록">
+                    <field name="name"/>
+                    <field name="order_detail_id"/>
+                    <field name="shipping_method"/>
+                    <field name="shipping_date"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View for iload.shipping -->
+        <record id="view_iload_shipping_form" model="ir.ui.view">
+            <field name="name">iload.shipping.form</field>
+            <field name="model">iload.shipping</field>
+            <field name="arch" type="xml">
+                <form string="선적 정보">
+                    <sheet>
+                        <header>
+                            <button name="action_open_shipping_mark_wizard" string="쉬핑 마크 생성" type="object" class="oe_highlight"/>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="order_detail_id"/>
+                                <field name="shipping_method"/>
+                                <field name="shipping_date"/>
+                            </group>
+                            <group>
+                                <!-- Add more fields here if needed -->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="선적 문서">
+                                <field name="shipping_document_ids">
+                                    <list editable="bottom">
+                                        <field name="name"/>
+                                        <field name="document_type"/>
+                                        <field name="issue_date"/>
+                                        <field name="attachment" widget="binary" filename="name"/>
+                                        <field name="description"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Kanban View for iload.shipping (Optional) -->
+        <record id="view_iload_shipping_kanban" model="ir.ui.view">
+            <field name="name">iload.shipping.kanban</field>
+            <field name="model">iload.shipping</field>
+            <field name="arch" type="xml">
+                <kanban group_by="shipping_method">
+                    <field name="name"/>
+                    <field name="order_detail_id"/>
+                    <field name="shipping_date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong><field name="name"/></strong>
+                                    <div>
+                                        <span>주문 상세: <field name="order_detail_id"/></span>
+                                    </div>
+                                    <div>
+                                        <span class="text-muted">선적 일자: <field name="shipping_date"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action for iload.shipping -->
+        <record id="action_iload_shipping_menu" model="ir.actions.act_window">
+            <field name="name">선적 관리</field>
+            <field name="res_model">iload.shipping</field>
+            <field name="view_mode">list,form,kanban</field>
+            <field name="domain">[('order_detail_id.state', 'in', ['shipping_prep', 'shipping_in_progress', 'shipping_fin', 'delivered'])]</field>
+        </record>
+
+    </data>
+</odoo>

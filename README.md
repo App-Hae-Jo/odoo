@@ -47,6 +47,13 @@ pip install -r requirements.txt
 
 ./odoo-bin -c odoo.conf --dev=all
 
+```
+
+// 종료 명령어
+deactivate
+
+```
+
 
 http://localhost:8069
 ```

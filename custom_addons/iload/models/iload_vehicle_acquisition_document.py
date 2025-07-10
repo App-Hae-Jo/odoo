@@ -63,6 +63,12 @@ class ILoadVehicleAcquisitionDocument(models.Model):
         ('invoice', '매입 세금계산서'),
         ('deregistration_application', '말소 신청서'),
         ('deregistration_confirmation', '말소 확인증'),
+        ('business_registration_cert', '사업자등록증 사본'),
+        ('auto_management_cert', '자동차관리사업 등록증'),
+        ('non_fact_confirmation', '비사실용 확인서'),
+        ('corporate_seal_cert', '법인 인감증명서 원본'),
+        ('corporate_registry_copy', '법인 등기부 등본'),
+        ('auto_rental_plan_cert', '자동차대여사업계획 신고 필증'),
         ('other', '기타'),
     ], string='문서 유형', required=True, default='contract', help="문서의 분류입니다.")
 
