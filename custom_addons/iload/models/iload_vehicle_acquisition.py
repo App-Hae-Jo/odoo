@@ -67,7 +67,7 @@ class ILoadVehicleAcquisition(models.Model):
     engine_displacement = fields.Float(string='배기량 (cc)', help="차량의 엔진 배기량입니다.")
 
     # 재무 정보
-    acquisition_amount = fields.Monetary(
+    acquisition_amount = fields.Float(
         string='매입액',
         required=True,
         help="차량을 매입한 금액입니다."

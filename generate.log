@@ -1,0 +1,632 @@
+--- Starting Odoo Module Update and Dummy Data Generation ---
+Log file: /Users/moornmo/Dev/odoo/generate.log
+Timestamp: #오후
+-------------------------------------------------------------
+Step 1: Installing/Updating iload module...
+2025-07-10 19:38:40,677 75098 INFO ? odoo: Odoo version 18.0 
+2025-07-10 19:38:40,678 75098 INFO ? odoo: Using configuration file at /Users/moornmo/.odoorc 
+2025-07-10 19:38:40,678 75098 INFO ? odoo: addons paths: ['/Users/moornmo/Dev/odoo/odoo/addons', '/Users/moornmo/Library/Application Support/Odoo/addons/18.0', '/Users/moornmo/Dev/odoo/addons', '/Users/moornmo/Dev/odoo/custom_addons'] 
+2025-07-10 19:38:40,678 75098 INFO ? odoo: database: default@default:default 
+2025-07-10 19:38:40,847 75098 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltopdf to print a pdf version of the reports. 
+2025-07-10 19:38:40,848 75098 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltoimage to generate images from html. 
+2025-07-10 19:38:41,118 75098 INFO ? odoo.service.server: HTTP service (werkzeug) running on Moornmoui-MacBookPro.local:8069 
+2025-07-10 19:38:41,141 75098 INFO iload odoo.modules.loading: loading 1 modules... 
+2025-07-10 19:38:41,149 75098 INFO iload odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2025-07-10 19:38:41,175 75098 INFO iload odoo.modules.loading: updating modules list 
+2025-07-10 19:38:41,178 75098 INFO iload odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2025-07-10 19:38:41,404 75098 WARNING iload odoo.modules.module: Missing `license` key in manifest for 'iload', defaulting to LGPL-3 
+2025-07-10 19:38:41,406 75098 WARNING iload odoo.modules.module: Missing `license` key in manifest for 'iload_test', defaulting to LGPL-3 
+2025-07-10 19:38:42,232 75098 INFO iload odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['아이로드'] to user __system__ #1 via n/a 
+2025-07-10 19:38:42,232 75098 INFO iload odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['아이로드'] to user __system__ #1 via n/a 
+2025-07-10 19:38:43,086 75098 INFO iload odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2025-07-10 19:38:43,530 75098 INFO iload odoo.modules.loading: loading 32 modules... 
+2025-07-10 19:38:44,187 75098 INFO iload odoo.modules.loading: Loading module iload (32/32) 
+2025-07-10 19:38:44,288 75098 WARNING iload py.warnings: /Users/moornmo/Dev/odoo/odoo/api.py:482: DeprecationWarning: The model odoo.addons.iload.models.iload_order_detail is not overriding the create method in batch
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 182, in run
+    main(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 175, in main
+    rc = odoo.service.server.start(preload=preload, stop=stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1457, in start
+    rc = server.run(preload, stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 622, in run
+    rc = preload_registries(preload)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1361, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/__init__.py", line 1, in <module>
+    from . import models
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/__init__.py", line 1, in <module>
+    from . import iload_order_detail
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_order_detail.py", line 5, in <module>
+    class ILoadOrderDetail(models.Model):
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_order_detail.py", line 175, in ILoadOrderDetail
+    @api.model
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-07-10 19:38:44,291 75098 WARNING iload py.warnings: /Users/moornmo/Dev/odoo/odoo/api.py:482: DeprecationWarning: The model odoo.addons.iload.models.iload_order is not overriding the create method in batch
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 182, in run
+    main(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 175, in main
+    rc = odoo.service.server.start(preload=preload, stop=stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1457, in start
+    rc = server.run(preload, stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 622, in run
+    rc = preload_registries(preload)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1361, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/__init__.py", line 1, in <module>
+    from . import models
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/__init__.py", line 2, in <module>
+    from . import iload_order
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_order.py", line 7, in <module>
+    class ILoadOrder(models.Model):
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_order.py", line 143, in ILoadOrder
+    @api.model
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-07-10 19:38:44,297 75098 WARNING iload py.warnings: /Users/moornmo/Dev/odoo/odoo/api.py:482: DeprecationWarning: The model odoo.addons.iload.models.iload_export_document is not overriding the create method in batch
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 182, in run
+    main(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 175, in main
+    rc = odoo.service.server.start(preload=preload, stop=stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1457, in start
+    rc = server.run(preload, stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 622, in run
+    rc = preload_registries(preload)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1361, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/__init__.py", line 1, in <module>
+    from . import models
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/__init__.py", line 7, in <module>
+    from . import iload_export_document
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_export_document.py", line 4, in <module>
+    class ILoadExportDocument(models.Model):
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_export_document.py", line 62, in ILoadExportDocument
+    @api.model
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-07-10 19:38:44,328 75098 WARNING iload py.warnings: <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 182, in run
+    main(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 175, in main
+    rc = odoo.service.server.start(preload=preload, stop=stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1457, in start
+    rc = server.run(preload, stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 622, in run
+    rc = preload_registries(preload)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1361, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+ 
+2025-07-10 19:38:44,328 75098 WARNING iload py.warnings: <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 182, in run
+    main(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 175, in main
+    rc = odoo.service.server.start(preload=preload, stop=stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1457, in start
+    rc = server.run(preload, stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 622, in run
+    rc = preload_registries(preload)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1361, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+ 
+2025-07-10 19:38:44,386 75098 WARNING iload py.warnings: <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 182, in run
+    main(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 175, in main
+    rc = odoo.service.server.start(preload=preload, stop=stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1457, in start
+    rc = server.run(preload, stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 622, in run
+    rc = preload_registries(preload)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1361, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+ 
+2025-07-10 19:38:44,422 75098 WARNING iload py.warnings: /Users/moornmo/Dev/odoo/odoo/api.py:482: DeprecationWarning: The model odoo.addons.iload.models.iload_shipping is not overriding the create method in batch
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 182, in run
+    main(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/server.py", line 175, in main
+    rc = odoo.service.server.start(preload=preload, stop=stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1457, in start
+    rc = server.run(preload, stop)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 622, in run
+    rc = preload_registries(preload)
+  File "/Users/moornmo/Dev/odoo/odoo/service/server.py", line 1361, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/__init__.py", line 1, in <module>
+    from . import models
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/__init__.py", line 11, in <module>
+    from . import iload_shipping
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_shipping.py", line 3, in <module>
+    class ILoadShipping(models.Model):
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_shipping.py", line 45, in ILoadShipping
+    @api.model
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-07-10 19:38:44,471 75098 WARNING iload odoo.fields: Field iload.order.detail.acquisition_id: unknown parameter 'attrs', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:44,471 75098 WARNING iload odoo.fields: Field iload.order.detail.state: unknown parameter 'tracking', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:44,472 75098 WARNING iload odoo.fields: Field iload.vehicle.acquisition.deregistration_date: unknown parameter 'attrs', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:44,472 75098 WARNING iload odoo.fields: Field iload.vehicle.acquisition.fuel_type: unknown parameter 'equired', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:44,482 75098 INFO iload odoo.modules.registry: module iload: creating or updating database tables 
+2025-07-10 19:38:44,903 75098 INFO iload odoo.schema: Table 'res_partner': unable to set NOT NULL on column 'destination_country_id' 
+2025-07-10 19:38:44,948 75098 INFO iload odoo.modules.loading: loading iload/security/ir.model.access.csv 
+2025-07-10 19:38:44,997 75098 INFO iload odoo.modules.loading: loading iload/report/iload_customs_request_report.xml 
+2025-07-10 19:38:45,011 75098 INFO iload odoo.modules.loading: loading iload/data/iload_sequence.xml 
+2025-07-10 19:38:45,015 75098 INFO iload odoo.modules.loading: loading iload/views/ocr_upload_vehicle_wizard_views.xml 
+2025-07-10 19:38:45,031 75098 INFO iload odoo.modules.loading: loading iload/wizard/iload_vehicle_deregistration_wizard_views.xml 
+2025-07-10 19:38:45,105 75098 INFO iload odoo.modules.loading: loading iload/views/res_partner_views.xml 
+2025-07-10 19:38:45,127 75098 INFO iload odoo.modules.loading: loading iload/views/iload_vehicle_views.xml 
+2025-07-10 19:38:45,146 75098 INFO iload odoo.modules.loading: loading iload/views/iload_order_views.xml 
+2025-07-10 19:38:45,164 75098 INFO iload odoo.modules.loading: loading iload/views/iload_export_declaration_upload_wizard_views.xml 
+2025-07-10 19:38:45,176 75098 INFO iload odoo.modules.loading: loading iload/views/iload_order_detail_views.xml 
+2025-07-10 19:38:45,195 75098 WARNING iload odoo.addons.base.models.ir_ui_view: 'kanban-box' is deprecated, define a 'card' template instead 
+2025-07-10 19:38:45,199 75098 INFO iload odoo.modules.loading: loading iload/views/iload_vehicle_acquisition_views.xml 
+2025-07-10 19:38:45,223 75098 INFO iload odoo.modules.loading: loading iload/views/iload_vehicle_acquisition_document_views.xml 
+2025-07-10 19:38:45,233 75098 WARNING iload odoo.addons.base.models.ir_ui_view: 'kanban-box' is deprecated, define a 'card' template instead 
+2025-07-10 19:38:45,238 75098 INFO iload odoo.modules.loading: loading iload/views/iload_export_document_views.xml 
+2025-07-10 19:38:45,253 75098 WARNING iload odoo.addons.base.models.ir_ui_view: 'kanban-box' is deprecated, define a 'card' template instead 
+2025-07-10 19:38:45,257 75098 INFO iload odoo.modules.loading: loading iload/views/iload_customs_print_wizard_views.xml 
+2025-07-10 19:38:45,271 75098 INFO iload odoo.modules.loading: loading iload/views/iload_shipping_mark_templates.xml 
+2025-07-10 19:38:45,284 75098 INFO iload odoo.modules.loading: loading iload/views/iload_shipping_views.xml 
+2025-07-10 19:38:45,303 75098 WARNING iload odoo.addons.base.models.ir_ui_view: 'kanban-box' is deprecated, define a 'card' template instead 
+2025-07-10 19:38:45,306 75098 INFO iload odoo.modules.loading: loading iload/views/iload_shipping_document_views.xml 
+2025-07-10 19:38:45,319 75098 INFO iload odoo.modules.loading: loading iload/views/iload_menus.xml 
+2025-07-10 19:38:45,360 75098 INFO iload odoo.modules.loading: loading iload/views/dashboard_views.xml 
+2025-07-10 19:38:45,401 75098 INFO iload odoo.addons.base.models.ir_module: module iload: no translation for language ko_KR 
+2025-07-10 19:38:45,422 75098 INFO iload odoo.modules.loading: Module iload loaded in 1.24s, 665 queries (+665 other) 
+2025-07-10 19:38:45,422 75098 INFO iload odoo.modules.loading: 32 modules loaded in 1.89s, 665 queries (+665 extra) 
+2025-07-10 19:38:45,465 75098 WARNING iload odoo.fields: Field iload.order.detail.acquisition_id: unknown parameter 'attrs', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:45,465 75098 WARNING iload odoo.fields: Field iload.order.detail.state: unknown parameter 'tracking', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:45,466 75098 WARNING iload odoo.fields: Field iload.vehicle.acquisition.deregistration_date: unknown parameter 'attrs', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:45,466 75098 WARNING iload odoo.fields: Field iload.vehicle.acquisition.fuel_type: unknown parameter 'equired', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:45,519 75098 WARNING iload odoo.fields: Field iload.order.detail.acquisition_id: unknown parameter 'attrs', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:45,519 75098 WARNING iload odoo.fields: Field iload.order.detail.state: unknown parameter 'tracking', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:45,520 75098 WARNING iload odoo.fields: Field iload.vehicle.acquisition.deregistration_date: unknown parameter 'attrs', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:45,520 75098 WARNING iload odoo.fields: Field iload.vehicle.acquisition.fuel_type: unknown parameter 'equired', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:38:45,532 75098 WARNING iload odoo.schema: Table 'res_partner': unable to set NOT NULL on column 'destination_country_id' 
+2025-07-10 19:38:45,988 75098 INFO iload odoo.modules.loading: Modules loaded. 
+2025-07-10 19:38:45,992 75098 INFO iload odoo.modules.registry: Registry changed, signaling through the database 
+2025-07-10 19:38:45,993 75098 INFO iload odoo.modules.registry: Registry loaded in 4.874s 
+2025-07-10 19:38:57,292 75098 INFO iload odoo.addons.base.models.ir_http: Generating routing map for key None 
+2025-07-10 19:38:57,318 75098 INFO iload werkzeug: 127.0.0.1 - - [10/Jul/2025 19:38:57] "GET /websocket?version=18.0-5 HTTP/1.1" 101 - 7 0.003 0.027
+2025-07-10 19:38:57,536 75098 INFO iload werkzeug: 127.0.0.1 - - [10/Jul/2025 19:38:57] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 3 0.010 0.014
+2025-07-10 19:38:57,637 75098 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2025-07-10 19:38:58,080 75098 INFO iload werkzeug: 127.0.0.1 - - [10/Jul/2025 19:38:58] "GET /websocket?version=18.0-5 HTTP/1.1" 101 - 2 0.001 0.005
+2025-07-10 19:38:58,117 75098 INFO iload werkzeug: 127.0.0.1 - - [10/Jul/2025 19:38:58] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.009 0.005
+2025-07-10 19:39:36,844 75098 INFO iload odoo.service.server: Initiating shutdown 
+2025-07-10 19:39:36,844 75098 INFO iload odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-07-10 19:39:36,940 75098 ERROR iload odoo.addons.bus.websocket: '<socket.socket [closed] fd=15, family=2, type=1, proto=0> is not registered' 
+Traceback (most recent call last):
+  File "/Users/moornmo/Dev/odoo/addons/bus/websocket.py", line 318, in get_messages
+    message = self._process_next_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/moornmo/Dev/odoo/addons/bus/websocket.py", line 464, in _process_next_message
+    self._handle_control_frame(frame)
+  File "/Users/moornmo/Dev/odoo/addons/bus/websocket.py", line 600, in _handle_control_frame
+    self._send_close_frame(code, reason)
+  File "/Users/moornmo/Dev/odoo/addons/bus/websocket.py", line 556, in _send_close_frame
+    self._send_frame(CloseFrame(code, reason))
+  File "/Users/moornmo/Dev/odoo/addons/bus/websocket.py", line 549, in _send_frame
+    return self._terminate()
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/moornmo/Dev/odoo/addons/bus/websocket.py", line 577, in _terminate
+    self.__selector.unregister(self.__socket)
+  File "/usr/local/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/selectors.py", line 536, in unregister
+    key = super().unregister(fileobj)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/selectors.py", line 251, in unregister
+    raise KeyError("{!r} is not registered".format(fileobj)) from None
+KeyError: '<socket.socket [closed] fd=15, family=2, type=1, proto=0> is not registered'
+Exception in thread odoo.service.cron.cron1:
+Traceback (most recent call last):
+Exception in thread odoo.service.cron.cron0:
+  File "/usr/local/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+Traceback (most recent call last):
+2025-07-10 19:39:36,956 75098 INFO iload odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 5 connections  
+  File "/usr/local/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+Step 2: Running dummy data generation script...
+2025-07-10 19:39:38,461 77324 INFO ? odoo: Odoo version 18.0 
+2025-07-10 19:39:38,461 77324 INFO ? odoo: Using configuration file at /Users/moornmo/.odoorc 
+2025-07-10 19:39:38,461 77324 INFO ? odoo: addons paths: ['/Users/moornmo/Dev/odoo/odoo/addons', '/Users/moornmo/Library/Application Support/Odoo/addons/18.0', '/Users/moornmo/Dev/odoo/addons', '/Users/moornmo/Dev/odoo/custom_addons'] 
+2025-07-10 19:39:38,461 77324 INFO ? odoo: database: default@default:default 
+2025-07-10 19:39:38,687 77324 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltopdf to print a pdf version of the reports. 
+2025-07-10 19:39:38,687 77324 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltoimage to generate images from html. 
+2025-07-10 19:39:38,957 77324 INFO ? odoo.service.server: Initiating shutdown 
+2025-07-10 19:39:38,957 77324 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-07-10 19:39:38,974 77324 INFO iload odoo.modules.loading: loading 1 modules... 
+2025-07-10 19:39:38,981 77324 INFO iload odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2025-07-10 19:39:38,995 77324 WARNING iload odoo.modules.module: Missing `license` key in manifest for 'iload', defaulting to LGPL-3 
+2025-07-10 19:39:39,000 77324 INFO iload odoo.modules.loading: loading 32 modules... 
+2025-07-10 19:39:39,469 77324 WARNING iload py.warnings: /Users/moornmo/Dev/odoo/odoo/api.py:482: DeprecationWarning: The model odoo.addons.iload.models.iload_order_detail is not overriding the create method in batch
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 126, in run
+    self.shell(config['db_name'])
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 112, in shell
+    registry = Registry(dbname)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 108, in __new__
+    return cls.new(db_name)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/__init__.py", line 1, in <module>
+    from . import models
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/__init__.py", line 1, in <module>
+    from . import iload_order_detail
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_order_detail.py", line 5, in <module>
+    class ILoadOrderDetail(models.Model):
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_order_detail.py", line 175, in ILoadOrderDetail
+    @api.model
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-07-10 19:39:39,471 77324 WARNING iload py.warnings: /Users/moornmo/Dev/odoo/odoo/api.py:482: DeprecationWarning: The model odoo.addons.iload.models.iload_order is not overriding the create method in batch
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 126, in run
+    self.shell(config['db_name'])
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 112, in shell
+    registry = Registry(dbname)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 108, in __new__
+    return cls.new(db_name)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/__init__.py", line 1, in <module>
+    from . import models
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/__init__.py", line 2, in <module>
+    from . import iload_order
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_order.py", line 7, in <module>
+    class ILoadOrder(models.Model):
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_order.py", line 143, in ILoadOrder
+    @api.model
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-07-10 19:39:39,475 77324 WARNING iload py.warnings: /Users/moornmo/Dev/odoo/odoo/api.py:482: DeprecationWarning: The model odoo.addons.iload.models.iload_export_document is not overriding the create method in batch
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 126, in run
+    self.shell(config['db_name'])
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 112, in shell
+    registry = Registry(dbname)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 108, in __new__
+    return cls.new(db_name)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/__init__.py", line 1, in <module>
+    from . import models
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/__init__.py", line 7, in <module>
+    from . import iload_export_document
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_export_document.py", line 4, in <module>
+    class ILoadExportDocument(models.Model):
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_export_document.py", line 62, in ILoadExportDocument
+    @api.model
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-07-10 19:39:39,501 77324 WARNING iload py.warnings: <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 126, in run
+    self.shell(config['db_name'])
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 112, in shell
+    registry = Registry(dbname)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 108, in __new__
+    return cls.new(db_name)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+ 
+2025-07-10 19:39:39,502 77324 WARNING iload py.warnings: <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 126, in run
+    self.shell(config['db_name'])
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 112, in shell
+    registry = Registry(dbname)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 108, in __new__
+    return cls.new(db_name)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+ 
+2025-07-10 19:39:39,692 77324 WARNING iload py.warnings: <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 126, in run
+    self.shell(config['db_name'])
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 112, in shell
+    registry = Registry(dbname)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 108, in __new__
+    return cls.new(db_name)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+ 
+2025-07-10 19:39:39,760 77324 WARNING iload py.warnings: /Users/moornmo/Dev/odoo/odoo/api.py:482: DeprecationWarning: The model odoo.addons.iload.models.iload_shipping is not overriding the create method in batch
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 126, in run
+    self.shell(config['db_name'])
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 112, in shell
+    registry = Registry(dbname)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 108, in __new__
+    return cls.new(db_name)
+  File "/Users/moornmo/Dev/odoo/venv/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/Users/moornmo/Dev/odoo/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/registry.py", line 129, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/Users/moornmo/Dev/odoo/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/Users/moornmo/Dev/odoo/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/__init__.py", line 1, in <module>
+    from . import models
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/__init__.py", line 11, in <module>
+    from . import iload_shipping
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_shipping.py", line 3, in <module>
+    class ILoadShipping(models.Model):
+  File "/Users/moornmo/Dev/odoo/custom_addons/iload/models/iload_shipping.py", line 45, in ILoadShipping
+    @api.model
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/Users/moornmo/Dev/odoo/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-07-10 19:39:39,764 77324 INFO iload odoo.modules.loading: 32 modules loaded in 0.76s, 0 queries (+0 extra) 
+2025-07-10 19:39:39,840 77324 WARNING iload odoo.fields: Field iload.order.detail.acquisition_id: unknown parameter 'attrs', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:39:39,840 77324 WARNING iload odoo.fields: Field iload.order.detail.state: unknown parameter 'tracking', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:39:39,841 77324 WARNING iload odoo.fields: Field iload.vehicle.acquisition.deregistration_date: unknown parameter 'attrs', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:39:39,841 77324 WARNING iload odoo.fields: Field iload.vehicle.acquisition.fuel_type: unknown parameter 'equired', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-07-10 19:39:39,852 77324 INFO iload odoo.modules.loading: Modules loaded. 
+2025-07-10 19:39:39,855 77324 INFO iload odoo.modules.registry: Registry loaded in 0.898s 
+Traceback (most recent call last):
+  File "/Users/moornmo/Dev/odoo/odoo-bin", line 8, in <module>
+    odoo.cli.main()
+  File "/Users/moornmo/Dev/odoo/odoo/cli/command.py", line 66, in main
+    o.run(args)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 126, in run
+    self.shell(config['db_name'])
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 119, in shell
+    self.console(local_vars)
+  File "/Users/moornmo/Dev/odoo/odoo/cli/shell.py", line 68, in console
+    exec(sys.stdin.read(), local_vars)
+  File "<string>", line 155
+    )
+    ^
+SyntaxError: unmatched ')'
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+-------------------------------------------------------------
+--- Odoo Module Update and Dummy Data Generation Complete ---
+Timestamp: #오후
